@@ -1,0 +1,3 @@
+# Attribinter.Parameters.Representations.Type [![NuGet version](https://img.shields.io/nuget/v/Attribinter.Parameters.Representations.Type.svg?style=plastic)](https://www.nuget.org/packages/Attribinter.Parameters.Representations.Type/) ![License](https://img.shields.io/github/license/Attribinter/Attribinter.Parameters.Representations.Type?style=plastic)
+
+Adds representations of type-parameters to `Attribinter`.
