@@ -13,6 +13,8 @@
 
     <ItemGroup>
         <PackageVersion Include="Attribinter.Logo" Version="1.0.3" />
+        <PackageVersion Include="Attribinter.Parameters.Representations.Abstractions" Version="8.0.0-alpha.4" />
+        <PackageVersion Include="Attribinter.Parameters.Type.Core" Version="8.0.0-alpha.2" />
         <PackageVersion Include="Attribinter.Tests.Common" Version="8.0.0-alpha.11" />
     </ItemGroup>
 
