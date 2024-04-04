@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RootNamespace>Attribinter.Parameters.Representations</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Title>Attribinter.Parameters.Representations.Type.Abstractions</Title>
+        <Description>
+            Provides abstractions related to representations of Attribinter type-parameters.
+        </Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Attribinter.Parameters.Representations.Abstractions" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Attribinter.Parameters.Representations.Type.Core\Attribinter.Parameters.Representations.Type.Core.csproj" />
+    </ItemGroup>
+
+</Project>
