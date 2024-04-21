@@ -4,17 +4,17 @@ using Xunit;
 
 public sealed class GetName
 {
-    private static string Target(ITypeParameterRepresentation representation) => representation.GetName();
+    private static string Target(IRepresentationFixture fixture) => fixture.Sut.GetName();
 
     [Fact]
     public void ReturnsNameConstructedWith()
     {
         var expected = "Name";
 
-        var context = RepresentationContext.Create(0, expected);
+        var fixture = RepresentationFixtureFactory.Create(0, expected);
 
-        var actual = Target(context.Representation);
+        var result = Target(fixture);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, result);
     }
 }

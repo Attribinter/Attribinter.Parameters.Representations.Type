@@ -6,15 +6,15 @@ using Xunit;
 
 public sealed class GetName
 {
-    private static string Target(ITypeParameterRepresentation representation) => representation.GetName();
+    private static string Target(IRepresentationFixture fixture) => fixture.Sut.GetName();
 
     [Fact]
     public void ThrowsInvalidOperationException()
     {
-        var context = RepresentationContext.Create(0);
+        var fixture = RepresentationFixtureFactory.Create(0);
 
-        var exception = Record.Exception(() => Target(context.Representation));
+        var result = Record.Exception(() => Target(fixture));
 
-        Assert.IsType<InvalidOperationException>(exception);
+        Assert.IsType<InvalidOperationException>(result);
     }
 }

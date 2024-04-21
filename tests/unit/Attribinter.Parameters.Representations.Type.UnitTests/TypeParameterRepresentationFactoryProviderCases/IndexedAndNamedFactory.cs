@@ -4,15 +4,15 @@ using Xunit;
 
 public sealed class IndexedAndNamedFactory
 {
-    private static IIndexedAndNamedTypeParameterRepresentationFactory Target() => Context.Provider.IndexedAndNamedFactory;
+    private IIndexedAndNamedTypeParameterRepresentationFactory Target() => Fixture.Sut.IndexedAndNamedFactory;
 
-    private static readonly ProviderContext Context = ProviderContext.Create();
+    private readonly IProviderFixture Fixture = ProviderFixtureFactory.Create();
 
     [Fact]
     public void ReturnsSameAsConstructedWith()
     {
-        var actual = Target();
+        var result = Target();
 
-        Assert.Same(Context.IndexedAndNamedFactory, actual);
+        Assert.Same(Fixture.IndexedAndNamedFactoryMock.Object, result);
     }
 }

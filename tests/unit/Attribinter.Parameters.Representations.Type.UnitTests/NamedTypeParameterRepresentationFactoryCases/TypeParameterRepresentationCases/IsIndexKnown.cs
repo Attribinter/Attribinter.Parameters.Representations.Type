@@ -4,15 +4,15 @@ using Xunit;
 
 public sealed class IsIndexKnown
 {
-    private static bool Target(ITypeParameterRepresentation representation) => representation.IsIndexKnown;
+    private static bool Target(IRepresentationFixture fixture) => fixture.Sut.IsIndexKnown;
 
     [Fact]
     public void ReturnsFalse()
     {
-        var context = RepresentationContext.Create(string.Empty);
+        var fixture = RepresentationFixtureFactory.Create(string.Empty);
 
-        var actual = Target(context.Representation);
+        var result = Target(fixture);
 
-        Assert.False(actual);
+        Assert.False(result);
     }
 }

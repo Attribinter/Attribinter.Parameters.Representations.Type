@@ -8,16 +8,16 @@ using Xunit;
 
 public sealed class Create
 {
-    private ITypeParameterRepresentation Target(ITypeParameter parameter) => Context.Factory.Create(parameter);
+    private ITypeParameterRepresentation Target(ITypeParameter parameter) => Fixture.Sut.Create(parameter);
 
-    private readonly FactoryContext Context = FactoryContext.Create();
+    private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
     public void NullParameter_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(null!));
+        var result = Record.Exception(() => Target(null!));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
@@ -33,13 +33,10 @@ public sealed class Create
         parameterMock.Setup(static (parameter) => parameter.Symbol.Ordinal).Returns(index);
         parameterMock.Setup(static (parameter) => parameter.Symbol.Name).Returns(name);
 
-        Context.InnerFactoryMock.Setup(static (factory) => factory.Create(It.IsAny<int>(), It.IsAny<string>())).Returns(representation);
+        Fixture.InnerFactoryMock.Setup((factory) => factory.Create(index, name)).Returns(representation);
 
-        var actual = Target(parameterMock.Object);
+        var result = Target(parameterMock.Object);
 
-        Assert.Same(representation, actual);
-
-        Context.InnerFactoryMock.Verify((factory) => factory.Create(index, name), Times.Once());
-        Context.InnerFactoryMock.VerifyNoOtherCalls();
+        Assert.Same(representation, result);
     }
 }

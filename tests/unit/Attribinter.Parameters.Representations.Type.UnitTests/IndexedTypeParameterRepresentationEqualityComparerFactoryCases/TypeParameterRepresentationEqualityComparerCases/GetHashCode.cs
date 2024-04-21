@@ -8,16 +8,16 @@ using Xunit;
 
 public sealed class GetHashCode
 {
-    private static int Target(ITypeParameterRepresentation obj) => Context.Comparer.GetHashCode(obj);
+    private int Target(ITypeParameterRepresentation obj) => Fixture.Sut.GetHashCode(obj);
 
-    private static readonly ComparerContext Context = ComparerContext.Create();
+    private readonly IComparerFixture Fixture = ComparerFixtureFactory.Create();
 
     [Fact]
     public void Null_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(null!));
+        var result = Record.Exception(() => Target(null!));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
@@ -27,9 +27,9 @@ public sealed class GetHashCode
 
         objMock.Setup(static (representation) => representation.IsIndexKnown).Returns(false);
 
-        var exception = Record.Exception(() => Target(objMock.Object));
+        var result = Record.Exception(() => Target(objMock.Object));
 
-        Assert.IsType<ArgumentException>(exception);
+        Assert.IsType<ArgumentException>(result);
     }
 
     [Fact]
@@ -39,7 +39,7 @@ public sealed class GetHashCode
     public void WithIndex_42_ReturnsIntegerHashCode() => WithIndex_ReturnsIntegerHashCode(42);
 
     [AssertionMethod]
-    private static void WithIndex_ReturnsIntegerHashCode(int index)
+    private void WithIndex_ReturnsIntegerHashCode(int index)
     {
         var expected = index.GetHashCode();
 
@@ -48,8 +48,8 @@ public sealed class GetHashCode
         objMock.Setup(static (representation) => representation.IsIndexKnown).Returns(true);
         objMock.Setup(static (representation) => representation.GetIndex()).Returns(index);
 
-        var actual = Target(objMock.Object);
+        var result = Target(objMock.Object);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, result);
     }
 }

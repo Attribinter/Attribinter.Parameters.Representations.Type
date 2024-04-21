@@ -8,24 +8,24 @@ using Xunit;
 
 public sealed class Equals
 {
-    private bool Target(ITypeParameterRepresentation x, ITypeParameterRepresentation y) => Context.Comparer.Equals(x, y);
+    private bool Target(ITypeParameterRepresentation x, ITypeParameterRepresentation y) => Fixture.Sut.Equals(x, y);
 
-    private readonly ComparerContext Context = ComparerContext.Create();
+    private readonly IComparerFixture Fixture = ComparerFixtureFactory.Create();
 
     [Fact]
     public void NullX_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(null!, Mock.Of<ITypeParameterRepresentation>()));
+        var result = Record.Exception(() => Target(null!, Mock.Of<ITypeParameterRepresentation>()));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
     public void NullY_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(Mock.Of<ITypeParameterRepresentation>(), null!));
+        var result = Record.Exception(() => Target(Mock.Of<ITypeParameterRepresentation>(), null!));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
@@ -35,9 +35,9 @@ public sealed class Equals
 
         xMock.Setup(static (representation) => representation.IsNameKnown).Returns(false);
 
-        var exception = Record.Exception(() => Target(xMock.Object, Mock.Of<ITypeParameterRepresentation>()));
+        var result = Record.Exception(() => Target(xMock.Object, Mock.Of<ITypeParameterRepresentation>()));
 
-        Assert.IsType<ArgumentException>(exception);
+        Assert.IsType<ArgumentException>(result);
     }
 
     [Fact]
@@ -49,9 +49,9 @@ public sealed class Equals
         xMock.Setup(static (representation) => representation.IsNameKnown).Returns(true);
         yMock.Setup(static (representation) => representation.IsNameKnown).Returns(false);
 
-        var exception = Record.Exception(() => Target(xMock.Object, yMock.Object));
+        var result = Record.Exception(() => Target(xMock.Object, yMock.Object));
 
-        Assert.IsType<ArgumentException>(exception);
+        Assert.IsType<ArgumentException>(result);
     }
 
     [Fact]
@@ -75,12 +75,10 @@ public sealed class Equals
         yMock.Setup(static (representation) => representation.IsNameKnown).Returns(true);
         yMock.Setup(static (representation) => representation.GetName()).Returns(yName);
 
-        Context.NameComparerMock.Setup(static (comparer) => comparer.Equals(It.IsAny<string>(), It.IsAny<string>())).Returns(returnValue);
+        Fixture.NameComparerMock.Setup((comparer) => comparer.Equals(xName, yName)).Returns(returnValue);
 
-        var actual = Target(xMock.Object, yMock.Object);
+        var result = Target(xMock.Object, yMock.Object);
 
-        Assert.Equal(returnValue, actual);
-
-        Context.NameComparerMock.Verify((comparer) => comparer.Equals(xName, yName), Times.Once());
+        Assert.Equal(returnValue, result);
     }
 }

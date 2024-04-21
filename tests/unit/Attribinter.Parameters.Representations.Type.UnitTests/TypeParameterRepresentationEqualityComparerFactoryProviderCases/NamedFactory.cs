@@ -4,15 +4,15 @@ using Xunit;
 
 public sealed class NamedFactory
 {
-    private static INamedTypeParameterRepresentationEqualityComparerFactory Target() => Context.Provider.NamedFactory;
+    private INamedTypeParameterRepresentationEqualityComparerFactory Target() => Fixture.Sut.NamedFactory;
 
-    private static readonly ProviderContext Context = ProviderContext.Create();
+    private readonly IProviderFixture Fixture = ProviderFixtureFactory.Create();
 
     [Fact]
     public void ReturnsSameAsConstructedWith()
     {
-        var actual = Target();
+        var result = Target();
 
-        Assert.Same(Context.NamedFactory, actual);
+        Assert.Same(Fixture.NamedFactoryMock.Object, result);
     }
 }

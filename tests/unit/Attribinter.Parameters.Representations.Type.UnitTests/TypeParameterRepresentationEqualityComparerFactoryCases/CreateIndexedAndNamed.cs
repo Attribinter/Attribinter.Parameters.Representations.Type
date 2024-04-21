@@ -9,16 +9,16 @@ using Xunit;
 
 public sealed class CreateIndexedAndNamed
 {
-    private IEqualityComparer<ITypeParameterRepresentation> Target(IEqualityComparer<string> nameComparer) => Context.Factory.CreateIndexedAndNamed(nameComparer);
+    private IEqualityComparer<ITypeParameterRepresentation> Target(IEqualityComparer<string> nameComparer) => Fixture.Sut.CreateIndexedAndNamed(nameComparer);
 
-    private readonly FactoryContext Context = FactoryContext.Create();
+    private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
     public void NullNameComparer_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(null!));
+        var result = Record.Exception(() => Target(null!));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
@@ -28,13 +28,10 @@ public sealed class CreateIndexedAndNamed
 
         var comparer = Mock.Of<IEqualityComparer<ITypeParameterRepresentation>>();
 
-        Context.FactoryProviderMock.Setup(static (provider) => provider.IndexedAndNamedFactory.Create(It.IsAny<IEqualityComparer<string>>())).Returns(comparer);
+        Fixture.FactoryProviderMock.Setup((provider) => provider.IndexedAndNamedFactory.Create(nameComparer)).Returns(comparer);
 
-        var actual = Target(nameComparer);
+        var result = Target(nameComparer);
 
-        Assert.Equal(comparer, actual);
-
-        Context.FactoryProviderMock.Verify((provider) => provider.IndexedAndNamedFactory.Create(nameComparer), Times.Once());
-        Context.FactoryProviderMock.VerifyNoOtherCalls();
+        Assert.Equal(comparer, result);
     }
 }

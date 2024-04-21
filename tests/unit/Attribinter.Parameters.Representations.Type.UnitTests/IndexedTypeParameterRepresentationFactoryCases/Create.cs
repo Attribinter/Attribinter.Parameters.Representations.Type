@@ -4,15 +4,15 @@ using Xunit;
 
 public sealed class Create
 {
-    private static ITypeParameterRepresentation Target(int index) => Context.Factory.Create(index);
+    private ITypeParameterRepresentation Target(int index) => Fixture.Sut.Create(index);
 
-    private static readonly FactoryContext Context = FactoryContext.Create();
+    private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
-    public void ValidIndex_ReturnsNotNull()
+    public void ValidIndex_ReturnsRepresentation()
     {
-        var actual = Target(0);
+        var result = Target(0);
 
-        Assert.NotNull(actual);
+        Assert.NotNull(result);
     }
 }

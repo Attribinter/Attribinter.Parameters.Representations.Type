@@ -9,23 +9,23 @@ using Xunit;
 
 public sealed class Create
 {
-    private static IEqualityComparer<ITypeParameterRepresentation> Target(IEqualityComparer<string> nameComparer) => Context.Factory.Create(nameComparer);
+    private IEqualityComparer<ITypeParameterRepresentation> Target(IEqualityComparer<string> nameComparer) => Fixture.Sut.Create(nameComparer);
 
-    private static readonly FactoryContext Context = FactoryContext.Create();
+    private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
     public void NullNameComparer_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(null!));
+        var result = Record.Exception(() => Target(null!));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
-    public void ValidNameComparer_ReturnsNotNull()
+    public void ValidNameComparer_ReturnsComparer()
     {
-        var actual = Target(Mock.Of<IEqualityComparer<string>>());
+        var result = Target(Mock.Of<IEqualityComparer<string>>());
 
-        Assert.NotNull(actual);
+        Assert.NotNull(result);
     }
 }

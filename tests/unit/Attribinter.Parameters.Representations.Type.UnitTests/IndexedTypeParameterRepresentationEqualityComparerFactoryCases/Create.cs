@@ -6,15 +6,15 @@ using Xunit;
 
 public sealed class Create
 {
-    private static IEqualityComparer<ITypeParameterRepresentation> Target() => Context.Factory.Create();
+    private IEqualityComparer<ITypeParameterRepresentation> Target() => Fixture.Sut.Create();
 
-    private static readonly FactoryContext Context = FactoryContext.Create();
+    private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
-    public void ReturnsNotNull()
+    public void ReturnsComparer()
     {
-        var actual = Target();
+        var result = Target();
 
-        Assert.NotNull(actual);
+        Assert.NotNull(result);
     }
 }
