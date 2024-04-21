@@ -4,17 +4,17 @@ using Xunit;
 
 public sealed class GetIndex
 {
-    private static int Target(ITypeParameterRepresentation representation) => representation.GetIndex();
+    private static int Target(IRepresentationFixture fixture) => fixture.Sut.GetIndex();
 
     [Fact]
     public void ReturnsIndexConstructedWith()
     {
         var expected = 42;
 
-        var context = RepresentationContext.Create(expected);
+        var fixture = RepresentationFixtureFactory.Create(expected);
 
-        var actual = Target(context.Representation);
+        var result = Target(fixture);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, result);
     }
 }

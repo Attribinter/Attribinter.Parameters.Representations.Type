@@ -8,24 +8,24 @@ using Xunit;
 
 public sealed class Equals
 {
-    private static bool Target(ITypeParameterRepresentation x, ITypeParameterRepresentation y) => Context.Comparer.Equals(x, y);
+    private bool Target(ITypeParameterRepresentation x, ITypeParameterRepresentation y) => Fixture.Sut.Equals(x, y);
 
-    private static readonly ComparerContext Context = ComparerContext.Create();
+    private readonly IComparerFixture Fixture = ComparerFixtureFactory.Create();
 
     [Fact]
     public void NullX_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(null!, Mock.Of<ITypeParameterRepresentation>()));
+        var result = Record.Exception(() => Target(null!, Mock.Of<ITypeParameterRepresentation>()));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
     public void NullY_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(Mock.Of<ITypeParameterRepresentation>(), null!));
+        var result = Record.Exception(() => Target(Mock.Of<ITypeParameterRepresentation>(), null!));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
@@ -35,9 +35,9 @@ public sealed class Equals
 
         xMock.Setup(static (representation) => representation.IsIndexKnown).Returns(false);
 
-        var exception = Record.Exception(() => Target(xMock.Object, Mock.Of<ITypeParameterRepresentation>()));
+        var result = Record.Exception(() => Target(xMock.Object, Mock.Of<ITypeParameterRepresentation>()));
 
-        Assert.IsType<ArgumentException>(exception);
+        Assert.IsType<ArgumentException>(result);
     }
 
     [Fact]
@@ -49,9 +49,9 @@ public sealed class Equals
         xMock.Setup(static (representation) => representation.IsIndexKnown).Returns(true);
         yMock.Setup(static (representation) => representation.IsIndexKnown).Returns(false);
 
-        var exception = Record.Exception(() => Target(xMock.Object, yMock.Object));
+        var result = Record.Exception(() => Target(xMock.Object, yMock.Object));
 
-        Assert.IsType<ArgumentException>(exception);
+        Assert.IsType<ArgumentException>(result);
     }
 
     [Fact]
@@ -61,7 +61,7 @@ public sealed class Equals
     public void DifferentIndices_ReturnsFalse() => WithIndices_ReturnsIntegerEquality(41, 42);
 
     [AssertionMethod]
-    private static void WithIndices_ReturnsIntegerEquality(int xIndex, int yIndex)
+    private void WithIndices_ReturnsIntegerEquality(int xIndex, int yIndex)
     {
         var expected = xIndex == yIndex;
 
@@ -74,8 +74,8 @@ public sealed class Equals
         yMock.Setup(static (representation) => representation.IsIndexKnown).Returns(true);
         yMock.Setup(static (representation) => representation.GetIndex()).Returns(yIndex);
 
-        var actual = Target(xMock.Object, yMock.Object);
+        var result = Target(xMock.Object, yMock.Object);
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, result);
     }
 }

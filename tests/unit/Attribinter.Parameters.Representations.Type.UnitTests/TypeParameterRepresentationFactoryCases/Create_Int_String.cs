@@ -8,16 +8,16 @@ using Xunit;
 
 public sealed class Create_Int_String
 {
-    private ITypeParameterRepresentation Target(int index, string name) => Context.Factory.Create(index, name);
+    private ITypeParameterRepresentation Target(int index, string name) => Fixture.Sut.Create(index, name);
 
-    private readonly FactoryContext Context = FactoryContext.Create();
+    private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
     public void NullName_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(0, null!));
+        var result = Record.Exception(() => Target(0, null!));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
@@ -28,13 +28,10 @@ public sealed class Create_Int_String
 
         var representation = Mock.Of<ITypeParameterRepresentation>();
 
-        Context.FactoryProviderMock.Setup(static (provider) => provider.IndexedAndNamedFactory.Create(It.IsAny<int>(), It.IsAny<string>())).Returns(representation);
+        Fixture.FactoryProviderMock.Setup((provider) => provider.IndexedAndNamedFactory.Create(index, name)).Returns(representation);
 
-        var actual = Target(index, name);
+        var result = Target(index, name);
 
-        Assert.Equal(representation, actual);
-
-        Context.FactoryProviderMock.Verify((provider) => provider.IndexedAndNamedFactory.Create(index, name), Times.Once());
-        Context.FactoryProviderMock.VerifyNoOtherCalls();
+        Assert.Equal(representation, result);
     }
 }

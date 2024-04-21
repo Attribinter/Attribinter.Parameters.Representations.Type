@@ -10,8 +10,10 @@ public interface ITypeParameterRepresentation
     public abstract bool IsNameKnown { get; }
 
     /// <summary>Retrieves the index of the type parameter, if known.</summary>
+    /// <returns>The index of the type parameter, if known.</returns>
     public abstract int GetIndex();
 
     /// <summary>Retrieves the name of the type parameter, if known.</summary>
+    /// <returns>The name of the type parameter, if known.</returns>
     public abstract string GetName();
 }

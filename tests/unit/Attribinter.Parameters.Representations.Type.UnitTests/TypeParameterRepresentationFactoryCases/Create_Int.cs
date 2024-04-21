@@ -6,9 +6,9 @@ using Xunit;
 
 public sealed class Create_Int
 {
-    private ITypeParameterRepresentation Target(int index) => Context.Factory.Create(index);
+    private ITypeParameterRepresentation Target(int index) => Fixture.Sut.Create(index);
 
-    private readonly FactoryContext Context = FactoryContext.Create();
+    private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
     public void ReturnsRepresentation()
@@ -17,13 +17,10 @@ public sealed class Create_Int
 
         var representation = Mock.Of<ITypeParameterRepresentation>();
 
-        Context.FactoryProviderMock.Setup(static (provider) => provider.IndexedFactory.Create(It.IsAny<int>())).Returns(representation);
+        Fixture.FactoryProviderMock.Setup((provider) => provider.IndexedFactory.Create(index)).Returns(representation);
 
-        var actual = Target(index);
+        var result = Target(index);
 
-        Assert.Equal(representation, actual);
-
-        Context.FactoryProviderMock.Verify((provider) => provider.IndexedFactory.Create(index), Times.Once());
-        Context.FactoryProviderMock.VerifyNoOtherCalls();
+        Assert.Equal(representation, result);
     }
 }

@@ -4,15 +4,15 @@ using Xunit;
 
 public sealed class IsNameKnown
 {
-    private static bool Target(ITypeParameterRepresentation representation) => representation.IsNameKnown;
+    private static bool Target(IRepresentationFixture fixture) => fixture.Sut.IsNameKnown;
 
     [Fact]
     public void ReturnsTrue()
     {
-        var context = RepresentationContext.Create(0, string.Empty);
+        var fixture = RepresentationFixtureFactory.Create(0, string.Empty);
 
-        var actual = Target(context.Representation);
+        var result = Target(fixture);
 
-        Assert.True(actual);
+        Assert.True(result);
     }
 }

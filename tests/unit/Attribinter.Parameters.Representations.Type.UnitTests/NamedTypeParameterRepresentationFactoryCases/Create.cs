@@ -6,23 +6,23 @@ using Xunit;
 
 public sealed class Create
 {
-    private static ITypeParameterRepresentation Target(string name) => Context.Factory.Create(name);
+    private ITypeParameterRepresentation Target(string name) => Fixture.Sut.Create(name);
 
-    private static readonly FactoryContext Context = FactoryContext.Create();
+    private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
     public void NullName_ThrowsArgumentNullException()
     {
-        var exception = Record.Exception(() => Target(null!));
+        var result = Record.Exception(() => Target(null!));
 
-        Assert.IsType<ArgumentNullException>(exception);
+        Assert.IsType<ArgumentNullException>(result);
     }
 
     [Fact]
-    public void ValidName_ReturnsNotNull()
+    public void ValidName_ReturnsRepresentation()
     {
-        var actual = Target(string.Empty);
+        var result = Target(string.Empty);
 
-        Assert.NotNull(actual);
+        Assert.NotNull(result);
     }
 }

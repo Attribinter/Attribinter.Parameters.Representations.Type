@@ -6,15 +6,15 @@ using Xunit;
 
 public sealed class GetIndex
 {
-    private static int Target(ITypeParameterRepresentation representation) => representation.GetIndex();
+    private static int Target(IRepresentationFixture fixture) => fixture.Sut.GetIndex();
 
     [Fact]
     public void ThrowsInvalidOperationException()
     {
-        var context = RepresentationContext.Create(string.Empty);
+        var fixture = RepresentationFixtureFactory.Create(string.Empty);
 
-        var exception = Record.Exception(() => Target(context.Representation));
+        var result = Record.Exception(() => Target(fixture));
 
-        Assert.IsType<InvalidOperationException>(exception);
+        Assert.IsType<InvalidOperationException>(result);
     }
 }
