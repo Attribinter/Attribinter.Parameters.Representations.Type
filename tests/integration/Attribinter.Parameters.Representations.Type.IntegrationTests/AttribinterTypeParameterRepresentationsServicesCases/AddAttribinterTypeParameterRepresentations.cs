@@ -66,14 +66,12 @@ public sealed class AddAttribinterTypeParameterRepresentations
     {
         HostBuilder host = new();
 
-        host.ConfigureServices(configureServices);
+        host.ConfigureServices(static (services) => Target(services));
 
         var serviceProvider = host.Build().Services;
 
         var result = serviceProvider.GetRequiredService<TService>();
 
         Assert.NotNull(result);
-
-        static void configureServices(IServiceCollection services) => Target(services);
     }
 }
