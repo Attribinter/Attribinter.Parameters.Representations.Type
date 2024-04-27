@@ -4,8 +4,6 @@ using Xunit;
 
 public sealed class GetIndex
 {
-    private static int Target(IRepresentationFixture fixture) => fixture.Sut.GetIndex();
-
     [Fact]
     public void ReturnsIndexConstructedWith()
     {
@@ -17,4 +15,6 @@ public sealed class GetIndex
 
         Assert.Equal(expected, result);
     }
+
+    private static int Target(IRepresentationFixture fixture) => fixture.Sut.GetIndex();
 }

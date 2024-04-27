@@ -6,8 +6,6 @@ using Xunit;
 
 public sealed class GetName
 {
-    private static string Target(IRepresentationFixture fixture) => fixture.Sut.GetName();
-
     [Fact]
     public void ThrowsInvalidOperationException()
     {
@@ -17,4 +15,6 @@ public sealed class GetName
 
         Assert.IsType<InvalidOperationException>(result);
     }
+
+    private static string Target(IRepresentationFixture fixture) => fixture.Sut.GetName();
 }

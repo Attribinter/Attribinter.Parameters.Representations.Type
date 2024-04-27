@@ -4,8 +4,6 @@ using Xunit;
 
 public sealed class GetName
 {
-    private static string Target(IRepresentationFixture fixture) => fixture.Sut.GetName();
-
     [Fact]
     public void ReturnsNameConstructedWith()
     {
@@ -17,4 +15,6 @@ public sealed class GetName
 
         Assert.Equal(expected, result);
     }
+
+    private static string Target(IRepresentationFixture fixture) => fixture.Sut.GetName();
 }

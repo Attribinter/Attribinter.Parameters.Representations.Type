@@ -8,8 +8,6 @@ using Xunit;
 
 public sealed class Constructor
 {
-    private static LoweringTypeParameterRepresentationFactory Target(IIndexedAndNamedTypeParameterRepresentationFactory innerFactory) => new(innerFactory);
-
     [Fact]
     public void NullInnerFactory_ThrowsArgumentNullException()
     {
@@ -25,4 +23,6 @@ public sealed class Constructor
 
         Assert.NotNull(result);
     }
+
+    private static LoweringTypeParameterRepresentationFactory Target(IIndexedAndNamedTypeParameterRepresentationFactory innerFactory) => new(innerFactory);
 }

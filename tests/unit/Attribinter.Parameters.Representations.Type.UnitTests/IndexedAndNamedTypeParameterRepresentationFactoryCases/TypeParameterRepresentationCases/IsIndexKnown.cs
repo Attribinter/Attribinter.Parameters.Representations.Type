@@ -4,8 +4,6 @@ using Xunit;
 
 public sealed class IsIndexKnown
 {
-    private static bool Target(IRepresentationFixture fixture) => fixture.Sut.IsIndexKnown;
-
     [Fact]
     public void ReturnsTrue()
     {
@@ -15,4 +13,6 @@ public sealed class IsIndexKnown
 
         Assert.True(result);
     }
+
+    private static bool Target(IRepresentationFixture fixture) => fixture.Sut.IsIndexKnown;
 }
