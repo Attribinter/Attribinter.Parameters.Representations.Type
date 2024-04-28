@@ -4,8 +4,6 @@ using Xunit;
 
 public sealed class IsNameKnown
 {
-    private static bool Target(IRepresentationFixture fixture) => fixture.Sut.IsNameKnown;
-
     [Fact]
     public void ReturnsTrue()
     {
@@ -15,4 +13,6 @@ public sealed class IsNameKnown
 
         Assert.True(result);
     }
+
+    private static bool Target(IRepresentationFixture fixture) => fixture.Sut.IsNameKnown;
 }

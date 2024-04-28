@@ -8,8 +8,6 @@ using Xunit;
 
 public sealed class Constructor
 {
-    private static TypeParameterRepresentationFactoryProvider Target(IIndexedAndNamedTypeParameterRepresentationFactory indexedAndNamedFactory, IIndexedTypeParameterRepresentationFactory indexedFactory, INamedTypeParameterRepresentationFactory namedFactory) => new(indexedAndNamedFactory, indexedFactory, namedFactory);
-
     [Fact]
     public void NullIndexedAndNamedFactory_ThrowsArgumentNullException()
     {
@@ -41,4 +39,6 @@ public sealed class Constructor
 
         Assert.NotNull(result);
     }
+
+    private static TypeParameterRepresentationFactoryProvider Target(IIndexedAndNamedTypeParameterRepresentationFactory indexedAndNamedFactory, IIndexedTypeParameterRepresentationFactory indexedFactory, INamedTypeParameterRepresentationFactory namedFactory) => new(indexedAndNamedFactory, indexedFactory, namedFactory);
 }

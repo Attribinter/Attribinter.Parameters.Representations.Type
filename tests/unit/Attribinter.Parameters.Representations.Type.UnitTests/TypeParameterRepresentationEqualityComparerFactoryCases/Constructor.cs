@@ -8,8 +8,6 @@ using Xunit;
 
 public sealed class Constructor
 {
-    private static TypeParameterRepresentationEqualityComparerFactory Target(ITypeParameterRepresentationEqualityComparerFactoryProvider factoryProvider) => new(factoryProvider);
-
     [Fact]
     public void NullFactoryProvider_ThrowsArgumentNullException()
     {
@@ -25,4 +23,6 @@ public sealed class Constructor
 
         Assert.NotNull(result);
     }
+
+    private static TypeParameterRepresentationEqualityComparerFactory Target(ITypeParameterRepresentationEqualityComparerFactoryProvider factoryProvider) => new(factoryProvider);
 }

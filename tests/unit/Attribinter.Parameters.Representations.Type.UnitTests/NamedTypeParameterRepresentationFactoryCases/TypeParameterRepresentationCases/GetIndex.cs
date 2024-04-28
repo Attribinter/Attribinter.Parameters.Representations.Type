@@ -6,8 +6,6 @@ using Xunit;
 
 public sealed class GetIndex
 {
-    private static int Target(IRepresentationFixture fixture) => fixture.Sut.GetIndex();
-
     [Fact]
     public void ThrowsInvalidOperationException()
     {
@@ -17,4 +15,6 @@ public sealed class GetIndex
 
         Assert.IsType<InvalidOperationException>(result);
     }
+
+    private static int Target(IRepresentationFixture fixture) => fixture.Sut.GetIndex();
 }
