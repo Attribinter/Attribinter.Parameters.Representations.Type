@@ -59,6 +59,9 @@ public sealed class AddParaminterTypeParameterRepresentations
     [Fact]
     public void ITypeParameterRepresentationFactoryProvider_ServiceCanBeResolved() => ServiceCanBeResolved<ITypeParameterRepresentationFactoryProvider>();
 
+    [Fact]
+    public void IParameterRepresentationFactory_ServiceCanBeResolved() => ServiceCanBeResolved<IParameterRepresentationFactory<ITypeParameter, ITypeParameterRepresentation>>();
+
     private static IServiceCollection Target(IServiceCollection services) => ParaminterTypeParameterRepresentationsServices.AddParaminterTypeParameterRepresentations(services);
 
     [AssertionMethod]

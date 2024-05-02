@@ -31,6 +31,8 @@ public static class ParaminterTypeParameterRepresentationsServices
         services.AddTransient<ITypeParameterRepresentationFactory, TypeParameterRepresentationFactory>();
         services.AddTransient<ITypeParameterRepresentationFactoryProvider, TypeParameterRepresentationFactoryProvider>();
 
+        services.AddTransient<IParameterRepresentationFactory<ITypeParameter, ITypeParameterRepresentation>, LoweringTypeParameterRepresentationFactory>();
+
         return services;
     }
 }
