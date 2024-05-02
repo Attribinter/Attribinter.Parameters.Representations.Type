@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+
+        <RootNamespace>Paraminter.Parameters.Representations</RootNamespace>
+
+        <Title>Paraminter.Parameters.Representations.Type.Abstractions</Title>
+        <Description>Provides abstractions related to Paraminter type parameter representations.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Paraminter.Parameters.Representations.Abstractions" />
+
+        <ProjectReference Include="..\Paraminter.Parameters.Representations.Type.Core\Paraminter.Parameters.Representations.Type.Core.csproj" />
+    </ItemGroup>
+
+</Project>
