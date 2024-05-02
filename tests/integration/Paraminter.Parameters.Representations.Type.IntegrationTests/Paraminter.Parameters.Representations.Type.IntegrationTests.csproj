@@ -18,6 +18,7 @@
         <PackageReference Include="xunit.runner.visualstudio" />
 
         <ProjectReference Include="..\..\..\src\Paraminter.Parameters.Representations.Type.Abstractions\Paraminter.Parameters.Representations.Type.Abstractions.csproj" />
+        <ProjectReference Include="..\..\..\src\Paraminter.Parameters.Representations.Type.Core\Paraminter.Parameters.Representations.Type.Core.csproj" />
         <ProjectReference Include="..\..\..\src\Paraminter.Parameters.Representations.Type.DependencyInjection\Paraminter.Parameters.Representations.Type.DependencyInjection.csproj" />
         <ProjectReference Include="..\..\..\src\Paraminter.Parameters.Representations.Type\Paraminter.Parameters.Representations.Type.csproj" />
     </ItemGroup>
