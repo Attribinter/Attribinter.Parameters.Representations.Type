@@ -1,14 +1,5 @@
-# Attribinter.Parameters.Representations.Type
+# Paraminter.Parameters.Representations.Type
 
-Adds representations of type-parameters to `Attribinter`.
+Adds representations of type parameters to `Paraminter`.
 
-See [Attribinter](https://www.github.com/Attribinter/Attribinter) for more information.
-
-## NuGet
-
-The repository publishes the following NuGet packages:
-
-* [Attribinter.Parameters.Representations.Type](https://www.nuget.org/packages/Attribinter.Parameters.Representations.Type/)
-* [Attribinter.Parameters.Representations.Type.Abstractions](https://www.nuget.org/packages/Attribinter.Parameters.Representations.Type.Abstractions/)
-* [Attribinter.Parameters.Representations.Type.Core](https://www.nuget.org/packages/Attribinter.Parameters.Representations.Type.Core/)
-* [Attribinter.Parameters.Representations.Type.DependencyInjection](https://www.nuget.org/packages/Attribinter.Parameters.Representations.Type.DependencyInjection/)
+See [Paraminter](https://www.github.com/Paraminter/Paraminter) for more information.
