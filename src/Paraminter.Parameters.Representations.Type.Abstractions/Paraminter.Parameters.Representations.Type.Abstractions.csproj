@@ -6,7 +6,7 @@
         <RootNamespace>Paraminter.Parameters.Representations</RootNamespace>
 
         <Title>Paraminter.Parameters.Representations.Type.Abstractions</Title>
-        <Description>Provides abstractions related to representations of Paraminter type parameters.</Description>
+        <Description>Provides abstractions related to Paraminter type parameter representations.</Description>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,5 +1,5 @@
 # Paraminter.Parameters.Representations.Type.Core
 
-Provides representations of `Paraminter` type parameters.
+Defines `Paraminter` type parameter representations.
 
 See [GitHub](https://github.com/Paraminter/Paraminter.Parameters.Representations.Type) for more information.
