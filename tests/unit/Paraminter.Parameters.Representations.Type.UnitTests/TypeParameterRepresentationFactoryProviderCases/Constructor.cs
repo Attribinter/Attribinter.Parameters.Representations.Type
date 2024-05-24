@@ -9,7 +9,7 @@ using Xunit;
 public sealed class Constructor
 {
     [Fact]
-    public void NullIndexedAndNamedFactory_ThrowsArgumentNullException()
+    public void NullIndexedAndNamed_ThrowsArgumentNullException()
     {
         var result = Record.Exception(() => Target(null!, Mock.Of<IIndexedTypeParameterRepresentationFactory>(), Mock.Of<INamedTypeParameterRepresentationFactory>()));
 
@@ -17,7 +17,7 @@ public sealed class Constructor
     }
 
     [Fact]
-    public void NullIndexedFactory_ThrowsArgumentNullException()
+    public void NullIndexed_ThrowsArgumentNullException()
     {
         var result = Record.Exception(() => Target(Mock.Of<IIndexedAndNamedTypeParameterRepresentationFactory>(), null!, Mock.Of<INamedTypeParameterRepresentationFactory>()));
 
@@ -25,7 +25,7 @@ public sealed class Constructor
     }
 
     [Fact]
-    public void NullNamedFactory_ThrowsArgumentNullException()
+    public void NullNamed_ThrowsArgumentNullException()
     {
         var result = Record.Exception(() => Target(Mock.Of<IIndexedAndNamedTypeParameterRepresentationFactory>(), Mock.Of<IIndexedTypeParameterRepresentationFactory>(), null!));
 
@@ -40,5 +40,5 @@ public sealed class Constructor
         Assert.NotNull(result);
     }
 
-    private static TypeParameterRepresentationFactoryProvider Target(IIndexedAndNamedTypeParameterRepresentationFactory indexedAndNamedFactory, IIndexedTypeParameterRepresentationFactory indexedFactory, INamedTypeParameterRepresentationFactory namedFactory) => new(indexedAndNamedFactory, indexedFactory, namedFactory);
+    private static TypeParameterRepresentationFactoryProvider Target(IIndexedAndNamedTypeParameterRepresentationFactory indexedAndNamed, IIndexedTypeParameterRepresentationFactory indexed, INamedTypeParameterRepresentationFactory named) => new(indexedAndNamed, indexed, named);
 }

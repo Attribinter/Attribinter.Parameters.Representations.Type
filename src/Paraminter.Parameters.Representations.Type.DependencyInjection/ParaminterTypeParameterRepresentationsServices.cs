@@ -21,14 +21,12 @@ public static class ParaminterTypeParameterRepresentationsServices
         services.AddTransient<IIndexedTypeParameterRepresentationEqualityComparerFactory, IndexedTypeParameterRepresentationEqualityComparerFactory>();
         services.AddTransient<INamedTypeParameterRepresentationEqualityComparerFactory, NamedTypeParameterRepresentationEqualityComparerFactory>();
 
-        services.AddTransient<ITypeParameterRepresentationEqualityComparerFactory, TypeParameterRepresentationEqualityComparerFactory>();
         services.AddTransient<ITypeParameterRepresentationEqualityComparerFactoryProvider, TypeParameterRepresentationEqualityComparerFactoryProvider>();
 
         services.AddTransient<IIndexedAndNamedTypeParameterRepresentationFactory, IndexedAndNamedTypeParameterRepresentationFactory>();
         services.AddTransient<IIndexedTypeParameterRepresentationFactory, IndexedTypeParameterRepresentationFactory>();
         services.AddTransient<INamedTypeParameterRepresentationFactory, NamedTypeParameterRepresentationFactory>();
 
-        services.AddTransient<ITypeParameterRepresentationFactory, TypeParameterRepresentationFactory>();
         services.AddTransient<ITypeParameterRepresentationFactoryProvider, TypeParameterRepresentationFactoryProvider>();
 
         services.AddTransient<IParameterRepresentationFactory<ITypeParameter, ITypeParameterRepresentation>, LoweringTypeParameterRepresentationFactory>();

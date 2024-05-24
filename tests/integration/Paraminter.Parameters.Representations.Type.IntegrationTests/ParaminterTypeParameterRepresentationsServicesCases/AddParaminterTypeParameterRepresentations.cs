@@ -17,9 +17,6 @@ public sealed class AddParaminterTypeParameterRepresentations
     public void INamedTypeParameterRepresentationEqualityComparerFactory_ServiceCanBeResolved() => ServiceCanBeResolved<INamedTypeParameterRepresentationEqualityComparerFactory>();
 
     [Fact]
-    public void ITypeParameterRepresentationEqualityComparerFactory_ServiceCanBeResolved() => ServiceCanBeResolved<ITypeParameterRepresentationEqualityComparerFactory>();
-
-    [Fact]
     public void ITypeParameterRepresentationEqualityComparerFactoryProvider_ServiceCanBeResolved() => ServiceCanBeResolved<ITypeParameterRepresentationEqualityComparerFactoryProvider>();
 
     [Fact]
@@ -30,9 +27,6 @@ public sealed class AddParaminterTypeParameterRepresentations
 
     [Fact]
     public void INamedTypeParameterRepresentationFactory_ServiceCanBeResolved() => ServiceCanBeResolved<INamedTypeParameterRepresentationFactory>();
-
-    [Fact]
-    public void ITypeParameterRepresentationFactory_ServiceCanBeResolved() => ServiceCanBeResolved<ITypeParameterRepresentationFactory>();
 
     [Fact]
     public void ITypeParameterRepresentationFactoryProvider_ServiceCanBeResolved() => ServiceCanBeResolved<ITypeParameterRepresentationFactoryProvider>();

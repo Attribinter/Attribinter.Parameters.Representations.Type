@@ -5,22 +5,22 @@ using System;
 /// <inheritdoc cref="ITypeParameterRepresentationEqualityComparerFactoryProvider"/>
 public sealed class TypeParameterRepresentationEqualityComparerFactoryProvider : ITypeParameterRepresentationEqualityComparerFactoryProvider
 {
-    private readonly IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory IndexedAndNamedFactory;
-    private readonly IIndexedTypeParameterRepresentationEqualityComparerFactory IndexedFactory;
-    private readonly INamedTypeParameterRepresentationEqualityComparerFactory NamedFactory;
+    private readonly IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory IndexedAndNamed;
+    private readonly IIndexedTypeParameterRepresentationEqualityComparerFactory Indexed;
+    private readonly INamedTypeParameterRepresentationEqualityComparerFactory Named;
 
     /// <summary>Instantiates a <see cref="TypeParameterRepresentationEqualityComparerFactoryProvider"/>, providing factories of comparers of <see cref="ITypeParameterRepresentation"/>.</summary>
-    /// <param name="indexedAndNamedFactory">The factory handling creation of comparers of <see cref="ITypeParameterRepresentation"/> which consider the indices and names of type parameter representations.</param>
-    /// <param name="indexedFactory">The factory handling creation of comparers of <see cref="ITypeParameterRepresentation"/> which consider the indices of type parameter representations.</param>
-    /// <param name="namedFactory">The factory handling creation of comparers of <see cref="ITypeParameterRepresentation"/> which consider the names of type parameter representations.</param>
-    public TypeParameterRepresentationEqualityComparerFactoryProvider(IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory indexedAndNamedFactory, IIndexedTypeParameterRepresentationEqualityComparerFactory indexedFactory, INamedTypeParameterRepresentationEqualityComparerFactory namedFactory)
+    /// <param name="indexedAndNamed">Handles creation of comparers of <see cref="ITypeParameterRepresentation"/> which consider the indices and names of type parameter representations.</param>
+    /// <param name="indexed">Handles creation of comparers of <see cref="ITypeParameterRepresentation"/> which consider the indices of type parameter representations.</param>
+    /// <param name="named">Handles creation of comparers of <see cref="ITypeParameterRepresentation"/> which consider the names of type parameter representations.</param>
+    public TypeParameterRepresentationEqualityComparerFactoryProvider(IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory indexedAndNamed, IIndexedTypeParameterRepresentationEqualityComparerFactory indexed, INamedTypeParameterRepresentationEqualityComparerFactory named)
     {
-        IndexedAndNamedFactory = indexedAndNamedFactory ?? throw new ArgumentNullException(nameof(indexedAndNamedFactory));
-        IndexedFactory = indexedFactory ?? throw new ArgumentNullException(nameof(indexedFactory));
-        NamedFactory = namedFactory ?? throw new ArgumentNullException(nameof(namedFactory));
+        IndexedAndNamed = indexedAndNamed ?? throw new ArgumentNullException(nameof(indexedAndNamed));
+        Indexed = indexed ?? throw new ArgumentNullException(nameof(indexed));
+        Named = named ?? throw new ArgumentNullException(nameof(named));
     }
 
-    IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory ITypeParameterRepresentationEqualityComparerFactoryProvider.IndexedAndNamedFactory => IndexedAndNamedFactory;
-    IIndexedTypeParameterRepresentationEqualityComparerFactory ITypeParameterRepresentationEqualityComparerFactoryProvider.IndexedFactory => IndexedFactory;
-    INamedTypeParameterRepresentationEqualityComparerFactory ITypeParameterRepresentationEqualityComparerFactoryProvider.NamedFactory => NamedFactory;
+    IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory ITypeParameterRepresentationEqualityComparerFactoryProvider.IndexedAndNamed => IndexedAndNamed;
+    IIndexedTypeParameterRepresentationEqualityComparerFactory ITypeParameterRepresentationEqualityComparerFactoryProvider.Indexed => Indexed;
+    INamedTypeParameterRepresentationEqualityComparerFactory ITypeParameterRepresentationEqualityComparerFactoryProvider.Named => Named;
 }
