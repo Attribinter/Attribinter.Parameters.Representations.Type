@@ -8,8 +8,6 @@ using Xunit;
 
 public sealed class CreateIndexed
 {
-    private IEqualityComparer<ITypeParameterRepresentation> Target() => Fixture.Sut.CreateIndexed();
-
     private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
@@ -23,4 +21,6 @@ public sealed class CreateIndexed
 
         Assert.Equal(comparer, result);
     }
+
+    private IEqualityComparer<ITypeParameterRepresentation> Target() => Fixture.Sut.CreateIndexed();
 }

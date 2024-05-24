@@ -8,8 +8,6 @@ using Xunit;
 
 public sealed class GetHashCode
 {
-    private int Target(ITypeParameterRepresentation obj) => Fixture.Sut.GetHashCode(obj);
-
     private readonly IComparerFixture Fixture = ComparerFixtureFactory.Create();
 
     [Fact]
@@ -71,4 +69,6 @@ public sealed class GetHashCode
 
         Assert.Equal(expected, result);
     }
+
+    private int Target(ITypeParameterRepresentation obj) => Fixture.Sut.GetHashCode(obj);
 }

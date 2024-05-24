@@ -8,8 +8,6 @@ using Xunit;
 
 public sealed class Create
 {
-    private ITypeParameterRepresentation Target(ITypeParameter parameter) => Fixture.Sut.Create(parameter);
-
     private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
@@ -39,4 +37,6 @@ public sealed class Create
 
         Assert.Same(representation, result);
     }
+
+    private ITypeParameterRepresentation Target(ITypeParameter parameter) => Fixture.Sut.Create(parameter);
 }

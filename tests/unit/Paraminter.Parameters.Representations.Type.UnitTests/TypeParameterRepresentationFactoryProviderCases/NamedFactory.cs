@@ -4,8 +4,6 @@ using Xunit;
 
 public sealed class NamedFactory
 {
-    private INamedTypeParameterRepresentationFactory Target() => Fixture.Sut.NamedFactory;
-
     private readonly IProviderFixture Fixture = ProviderFixtureFactory.Create();
 
     [Fact]
@@ -15,4 +13,6 @@ public sealed class NamedFactory
 
         Assert.Same(Fixture.NamedFactoryMock.Object, result);
     }
+
+    private INamedTypeParameterRepresentationFactory Target() => Fixture.Sut.NamedFactory;
 }

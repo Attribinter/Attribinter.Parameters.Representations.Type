@@ -8,8 +8,6 @@ using Xunit;
 
 public sealed class Create_Int_String
 {
-    private ITypeParameterRepresentation Target(int index, string name) => Fixture.Sut.Create(index, name);
-
     private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
@@ -34,4 +32,6 @@ public sealed class Create_Int_String
 
         Assert.Equal(representation, result);
     }
+
+    private ITypeParameterRepresentation Target(int index, string name) => Fixture.Sut.Create(index, name);
 }

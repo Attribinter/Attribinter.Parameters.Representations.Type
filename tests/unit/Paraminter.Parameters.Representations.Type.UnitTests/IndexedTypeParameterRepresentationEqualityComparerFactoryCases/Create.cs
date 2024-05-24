@@ -6,8 +6,6 @@ using Xunit;
 
 public sealed class Create
 {
-    private IEqualityComparer<ITypeParameterRepresentation> Target() => Fixture.Sut.Create();
-
     private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
@@ -17,4 +15,6 @@ public sealed class Create
 
         Assert.NotNull(result);
     }
+
+    private IEqualityComparer<ITypeParameterRepresentation> Target() => Fixture.Sut.Create();
 }
