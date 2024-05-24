@@ -6,8 +6,6 @@ using Xunit;
 
 public sealed class Create
 {
-    private ITypeParameterRepresentation Target(int index, string name) => Fixture.Sut.Create(index, name);
-
     private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
@@ -25,4 +23,6 @@ public sealed class Create
 
         Assert.NotNull(result);
     }
+
+    private ITypeParameterRepresentation Target(int index, string name) => Fixture.Sut.Create(index, name);
 }

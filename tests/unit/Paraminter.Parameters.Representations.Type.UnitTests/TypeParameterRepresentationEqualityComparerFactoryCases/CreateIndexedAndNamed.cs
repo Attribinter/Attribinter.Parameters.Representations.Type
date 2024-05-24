@@ -9,8 +9,6 @@ using Xunit;
 
 public sealed class CreateIndexedAndNamed
 {
-    private IEqualityComparer<ITypeParameterRepresentation> Target(IEqualityComparer<string> nameComparer) => Fixture.Sut.CreateIndexedAndNamed(nameComparer);
-
     private readonly IFactoryFixture Fixture = FactoryFixtureFactory.Create();
 
     [Fact]
@@ -34,4 +32,6 @@ public sealed class CreateIndexedAndNamed
 
         Assert.Equal(comparer, result);
     }
+
+    private IEqualityComparer<ITypeParameterRepresentation> Target(IEqualityComparer<string> nameComparer) => Fixture.Sut.CreateIndexedAndNamed(nameComparer);
 }
