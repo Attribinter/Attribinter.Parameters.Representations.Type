@@ -5,22 +5,22 @@ using System;
 /// <inheritdoc cref="ITypeParameterRepresentationFactoryProvider"/>
 public sealed class TypeParameterRepresentationFactoryProvider : ITypeParameterRepresentationFactoryProvider
 {
-    private readonly IIndexedAndNamedTypeParameterRepresentationFactory IndexedAndNamedFactory;
-    private readonly IIndexedTypeParameterRepresentationFactory IndexedFactory;
-    private readonly INamedTypeParameterRepresentationFactory NamedFactory;
+    private readonly IIndexedAndNamedTypeParameterRepresentationFactory IndexedAndNamed;
+    private readonly IIndexedTypeParameterRepresentationFactory Indexed;
+    private readonly INamedTypeParameterRepresentationFactory Named;
 
     /// <summary>Instantiates a <see cref="TypeParameterRepresentationFactoryProvider"/>, providing factories of <see cref="ITypeParameterRepresentation"/>.</summary>
-    /// <param name="indexedAndNamedFactory">The factory handling creation of <see cref="ITypeParameterRepresentation"/> using the indices and names of type parameters.</param>
-    /// <param name="indexedFactory">The factory handling creation of <see cref="ITypeParameterRepresentation"/> using the indices of type parameters.</param>
-    /// <param name="namedFactory">The factory handling creation of <see cref="ITypeParameterRepresentation"/> using the names of type parameters.</param>
-    public TypeParameterRepresentationFactoryProvider(IIndexedAndNamedTypeParameterRepresentationFactory indexedAndNamedFactory, IIndexedTypeParameterRepresentationFactory indexedFactory, INamedTypeParameterRepresentationFactory namedFactory)
+    /// <param name="indexedAndNamed">Handles creation of <see cref="ITypeParameterRepresentation"/> using the indices and names of type parameters.</param>
+    /// <param name="indexed">Handles creation of <see cref="ITypeParameterRepresentation"/> using the indices of type parameters.</param>
+    /// <param name="named">Handles creation of <see cref="ITypeParameterRepresentation"/> using the names of type parameters.</param>
+    public TypeParameterRepresentationFactoryProvider(IIndexedAndNamedTypeParameterRepresentationFactory indexedAndNamed, IIndexedTypeParameterRepresentationFactory indexed, INamedTypeParameterRepresentationFactory named)
     {
-        IndexedAndNamedFactory = indexedAndNamedFactory ?? throw new ArgumentNullException(nameof(indexedAndNamedFactory));
-        IndexedFactory = indexedFactory ?? throw new ArgumentNullException(nameof(indexedFactory));
-        NamedFactory = namedFactory ?? throw new ArgumentNullException(nameof(namedFactory));
+        IndexedAndNamed = indexedAndNamed ?? throw new ArgumentNullException(nameof(indexedAndNamed));
+        Indexed = indexed ?? throw new ArgumentNullException(nameof(indexed));
+        Named = named ?? throw new ArgumentNullException(nameof(named));
     }
 
-    IIndexedAndNamedTypeParameterRepresentationFactory ITypeParameterRepresentationFactoryProvider.IndexedAndNamedFactory => IndexedAndNamedFactory;
-    IIndexedTypeParameterRepresentationFactory ITypeParameterRepresentationFactoryProvider.IndexedFactory => IndexedFactory;
-    INamedTypeParameterRepresentationFactory ITypeParameterRepresentationFactoryProvider.NamedFactory => NamedFactory;
+    IIndexedAndNamedTypeParameterRepresentationFactory ITypeParameterRepresentationFactoryProvider.IndexedAndNamed => IndexedAndNamed;
+    IIndexedTypeParameterRepresentationFactory ITypeParameterRepresentationFactoryProvider.Indexed => Indexed;
+    INamedTypeParameterRepresentationFactory ITypeParameterRepresentationFactoryProvider.Named => Named;
 }

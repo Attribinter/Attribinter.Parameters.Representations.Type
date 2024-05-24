@@ -2,7 +2,7 @@
 
 using Xunit;
 
-public sealed class IndexedFactory
+public sealed class IndexedAndNamed
 {
     private readonly IProviderFixture Fixture = ProviderFixtureFactory.Create();
 
@@ -11,8 +11,8 @@ public sealed class IndexedFactory
     {
         var result = Target();
 
-        Assert.Same(Fixture.IndexedFactoryMock.Object, result);
+        Assert.Same(Fixture.IndexedAndNamedMock.Object, result);
     }
 
-    private IIndexedTypeParameterRepresentationEqualityComparerFactory Target() => Fixture.Sut.IndexedFactory;
+    private IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory Target() => Fixture.Sut.IndexedAndNamed;
 }

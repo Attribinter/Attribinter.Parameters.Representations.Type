@@ -6,7 +6,7 @@ internal interface IProviderFixture
 {
     public abstract ITypeParameterRepresentationFactoryProvider Sut { get; }
 
-    public abstract Mock<IIndexedAndNamedTypeParameterRepresentationFactory> IndexedAndNamedFactoryMock { get; }
-    public abstract Mock<IIndexedTypeParameterRepresentationFactory> IndexedFactoryMock { get; }
-    public abstract Mock<INamedTypeParameterRepresentationFactory> NamedFactoryMock { get; }
+    public abstract Mock<IIndexedAndNamedTypeParameterRepresentationFactory> IndexedAndNamedMock { get; }
+    public abstract Mock<IIndexedTypeParameterRepresentationFactory> IndexedMock { get; }
+    public abstract Mock<INamedTypeParameterRepresentationFactory> NamedMock { get; }
 }

@@ -6,36 +6,36 @@ internal static class ProviderFixtureFactory
 {
     public static IProviderFixture Create()
     {
-        Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> indexedAndNamedFactoryMock = new();
-        Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> indexedFactoryMock = new();
-        Mock<INamedTypeParameterRepresentationEqualityComparerFactory> namedFactoryMock = new();
+        Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> indexedAndNamedMock = new();
+        Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> indexedMock = new();
+        Mock<INamedTypeParameterRepresentationEqualityComparerFactory> namedMock = new();
 
-        var sut = new TypeParameterRepresentationEqualityComparerFactoryProvider(indexedAndNamedFactoryMock.Object, indexedFactoryMock.Object, namedFactoryMock.Object);
+        var sut = new TypeParameterRepresentationEqualityComparerFactoryProvider(indexedAndNamedMock.Object, indexedMock.Object, namedMock.Object);
 
-        return new ProviderFixture(sut, indexedAndNamedFactoryMock, indexedFactoryMock, namedFactoryMock);
+        return new ProviderFixture(sut, indexedAndNamedMock, indexedMock, namedMock);
     }
 
     private sealed class ProviderFixture : IProviderFixture
     {
         private readonly ITypeParameterRepresentationEqualityComparerFactoryProvider Sut;
 
-        private readonly Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> IndexedAndNamedFactoryMock;
-        private readonly Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> IndexedFactoryMock;
-        private readonly Mock<INamedTypeParameterRepresentationEqualityComparerFactory> NamedFactoryMock;
+        private readonly Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> IndexedAndNamedMock;
+        private readonly Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> IndexedMock;
+        private readonly Mock<INamedTypeParameterRepresentationEqualityComparerFactory> NamedMock;
 
-        public ProviderFixture(ITypeParameterRepresentationEqualityComparerFactoryProvider sut, Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> indexedAndNamedFactoryMock, Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> indexedFactoryMock, Mock<INamedTypeParameterRepresentationEqualityComparerFactory> namedFactoryMock)
+        public ProviderFixture(ITypeParameterRepresentationEqualityComparerFactoryProvider sut, Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> indexedAndNamedMock, Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> indexedMock, Mock<INamedTypeParameterRepresentationEqualityComparerFactory> namedMock)
         {
             Sut = sut;
 
-            IndexedAndNamedFactoryMock = indexedAndNamedFactoryMock;
-            IndexedFactoryMock = indexedFactoryMock;
-            NamedFactoryMock = namedFactoryMock;
+            IndexedAndNamedMock = indexedAndNamedMock;
+            IndexedMock = indexedMock;
+            NamedMock = namedMock;
         }
 
         ITypeParameterRepresentationEqualityComparerFactoryProvider IProviderFixture.Sut => Sut;
 
-        Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> IProviderFixture.IndexedAndNamedFactoryMock => IndexedAndNamedFactoryMock;
-        Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> IProviderFixture.IndexedFactoryMock => IndexedFactoryMock;
-        Mock<INamedTypeParameterRepresentationEqualityComparerFactory> IProviderFixture.NamedFactoryMock => NamedFactoryMock;
+        Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> IProviderFixture.IndexedAndNamedMock => IndexedAndNamedMock;
+        Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> IProviderFixture.IndexedMock => IndexedMock;
+        Mock<INamedTypeParameterRepresentationEqualityComparerFactory> IProviderFixture.NamedMock => NamedMock;
     }
 }
