@@ -14,5 +14,9 @@ public sealed class IsNameKnown
         Assert.True(result);
     }
 
-    private static bool Target(IRepresentationFixture fixture) => fixture.Sut.IsNameKnown;
+    private static bool Target(
+        IRepresentationFixture fixture)
+    {
+        return fixture.Sut.IsNameKnown;
+    }
 }

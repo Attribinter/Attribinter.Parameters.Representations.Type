@@ -17,13 +17,16 @@ internal static class ComparerFixtureFactory
         return new ComparerFixture(sut, nameComparerMock);
     }
 
-    private sealed class ComparerFixture : IComparerFixture
+    private sealed class ComparerFixture
+        : IComparerFixture
     {
         private readonly IEqualityComparer<ITypeParameterRepresentation> Sut;
 
         private readonly Mock<IEqualityComparer<string>> NameComparerMock;
 
-        public ComparerFixture(IEqualityComparer<ITypeParameterRepresentation> sut, Mock<IEqualityComparer<string>> nameComparerMock)
+        public ComparerFixture(
+            IEqualityComparer<ITypeParameterRepresentation> sut,
+            Mock<IEqualityComparer<string>> nameComparerMock)
         {
             Sut = sut;
             NameComparerMock = nameComparerMock;

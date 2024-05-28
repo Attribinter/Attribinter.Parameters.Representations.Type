@@ -16,5 +16,9 @@ public sealed class GetName
         Assert.IsType<InvalidOperationException>(result);
     }
 
-    private static string Target(IRepresentationFixture fixture) => fixture.Sut.GetName();
+    private static string Target(
+        IRepresentationFixture fixture)
+    {
+        return fixture.Sut.GetName();
+    }
 }

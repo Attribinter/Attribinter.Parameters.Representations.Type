@@ -7,5 +7,7 @@ public interface IIndexedAndNamedTypeParameterRepresentationFactory
     /// <param name="index">The index of the type parameter.</param>
     /// <param name="name">The name of the type parameter.</param>
     /// <returns>The created <see cref="ITypeParameterRepresentation"/>.</returns>
-    public abstract ITypeParameterRepresentation Create(int index, string name);
+    public abstract ITypeParameterRepresentation Create(
+        int index,
+        string name);
 }

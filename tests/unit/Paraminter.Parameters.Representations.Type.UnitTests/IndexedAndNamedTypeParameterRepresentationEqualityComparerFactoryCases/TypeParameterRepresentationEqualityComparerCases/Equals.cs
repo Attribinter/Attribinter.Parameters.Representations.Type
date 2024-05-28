@@ -115,7 +115,8 @@ public sealed class Equals
     public void TrueReturningNameComparer_ReturnsTrue() => SameIndices_PropagatesReturnValue(true);
 
     [AssertionMethod]
-    private void SameIndices_PropagatesReturnValue(bool returnValue)
+    private void SameIndices_PropagatesReturnValue(
+        bool returnValue)
     {
         var index = 42;
 
@@ -142,5 +143,10 @@ public sealed class Equals
         Assert.Equal(returnValue, result);
     }
 
-    private bool Target(ITypeParameterRepresentation x, ITypeParameterRepresentation y) => Fixture.Sut.Equals(x, y);
+    private bool Target(
+        ITypeParameterRepresentation x,
+        ITypeParameterRepresentation y)
+    {
+        return Fixture.Sut.Equals(x, y);
+    }
 }

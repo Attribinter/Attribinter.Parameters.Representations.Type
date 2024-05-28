@@ -28,5 +28,9 @@ public sealed class AddParaminterTypeParameterRepresentations
         Assert.Same(services, result);
     }
 
-    private static IServiceCollection Target(IServiceCollection services) => ParaminterTypeParameterRepresentationsServices.AddParaminterTypeParameterRepresentations(services);
+    private static IServiceCollection Target(
+        IServiceCollection services)
+    {
+        return ParaminterTypeParameterRepresentationsServices.AddParaminterTypeParameterRepresentations(services);
+    }
 }

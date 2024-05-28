@@ -50,7 +50,9 @@ public sealed class GetHashCode
     public void WithIndexAndName_42_B_ReturnsTupleHashCode() => WithIndexAndName_ReturnsTupleHashCode(42, "B");
 
     [AssertionMethod]
-    private void WithIndexAndName_ReturnsTupleHashCode(int index, string name)
+    private void WithIndexAndName_ReturnsTupleHashCode(
+        int index,
+        string name)
     {
         var nameHashCode = 42;
 
@@ -70,5 +72,9 @@ public sealed class GetHashCode
         Assert.Equal(expected, result);
     }
 
-    private int Target(ITypeParameterRepresentation obj) => Fixture.Sut.GetHashCode(obj);
+    private int Target(
+        ITypeParameterRepresentation obj)
+    {
+        return Fixture.Sut.GetHashCode(obj);
+    }
 }

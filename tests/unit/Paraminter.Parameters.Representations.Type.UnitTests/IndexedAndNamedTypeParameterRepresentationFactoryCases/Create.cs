@@ -24,5 +24,10 @@ public sealed class Create
         Assert.NotNull(result);
     }
 
-    private ITypeParameterRepresentation Target(int index, string name) => Fixture.Sut.Create(index, name);
+    private ITypeParameterRepresentation Target(
+        int index,
+        string name)
+    {
+        return Fixture.Sut.Create(index, name);
+    }
 }

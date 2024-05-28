@@ -15,7 +15,8 @@ internal static class ProviderFixtureFactory
         return new ProviderFixture(sut, indexedAndNamedMock, indexedMock, namedMock);
     }
 
-    private sealed class ProviderFixture : IProviderFixture
+    private sealed class ProviderFixture
+        : IProviderFixture
     {
         private readonly ITypeParameterRepresentationFactoryProvider Sut;
 
@@ -23,7 +24,11 @@ internal static class ProviderFixtureFactory
         private readonly Mock<IIndexedTypeParameterRepresentationFactory> IndexedMock;
         private readonly Mock<INamedTypeParameterRepresentationFactory> NamedMock;
 
-        public ProviderFixture(ITypeParameterRepresentationFactoryProvider sut, Mock<IIndexedAndNamedTypeParameterRepresentationFactory> indexedAndNamedMock, Mock<IIndexedTypeParameterRepresentationFactory> indexedMock, Mock<INamedTypeParameterRepresentationFactory> namedMock)
+        public ProviderFixture(
+            ITypeParameterRepresentationFactoryProvider sut,
+            Mock<IIndexedAndNamedTypeParameterRepresentationFactory> indexedAndNamedMock,
+            Mock<IIndexedTypeParameterRepresentationFactory> indexedMock,
+            Mock<INamedTypeParameterRepresentationFactory> namedMock)
         {
             Sut = sut;
 

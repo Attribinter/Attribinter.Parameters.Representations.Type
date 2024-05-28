@@ -16,5 +16,9 @@ public sealed class GetIndex
         Assert.IsType<InvalidOperationException>(result);
     }
 
-    private static int Target(IRepresentationFixture fixture) => fixture.Sut.GetIndex();
+    private static int Target(
+        IRepresentationFixture fixture)
+    {
+        return fixture.Sut.GetIndex();
+    }
 }

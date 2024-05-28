@@ -14,5 +14,9 @@ public sealed class IsIndexKnown
         Assert.False(result);
     }
 
-    private static bool Target(IRepresentationFixture fixture) => fixture.Sut.IsIndexKnown;
+    private static bool Target(
+        IRepresentationFixture fixture)
+    {
+        return fixture.Sut.IsIndexKnown;
+    }
 }

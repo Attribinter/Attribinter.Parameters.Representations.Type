@@ -48,5 +48,9 @@ public sealed class GetHashCode
         Assert.Equal(hashCode, result);
     }
 
-    private int Target(ITypeParameterRepresentation obj) => Fixture.Sut.GetHashCode(obj);
+    private int Target(
+        ITypeParameterRepresentation obj)
+    {
+        return Fixture.Sut.GetHashCode(obj);
+    }
 }

@@ -5,7 +5,7 @@ using Xunit;
 public sealed class GetIndex
 {
     [Fact]
-    public void ReturnsIndexConstructedWith()
+    public void ReturnsIndex()
     {
         var expected = 42;
 
@@ -16,5 +16,9 @@ public sealed class GetIndex
         Assert.Equal(expected, result);
     }
 
-    private static int Target(IRepresentationFixture fixture) => fixture.Sut.GetIndex();
+    private static int Target(
+        IRepresentationFixture fixture)
+    {
+        return fixture.Sut.GetIndex();
+    }
 }

@@ -27,5 +27,9 @@ public sealed class Create
         Assert.NotNull(result);
     }
 
-    private IEqualityComparer<ITypeParameterRepresentation> Target(IEqualityComparer<string> nameComparer) => Fixture.Sut.Create(nameComparer);
+    private IEqualityComparer<ITypeParameterRepresentation> Target(
+        IEqualityComparer<string> nameComparer)
+    {
+        return Fixture.Sut.Create(nameComparer);
+    }
 }

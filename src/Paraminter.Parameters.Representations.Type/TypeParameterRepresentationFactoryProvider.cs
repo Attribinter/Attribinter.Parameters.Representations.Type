@@ -3,7 +3,8 @@
 using System;
 
 /// <inheritdoc cref="ITypeParameterRepresentationFactoryProvider"/>
-public sealed class TypeParameterRepresentationFactoryProvider : ITypeParameterRepresentationFactoryProvider
+public sealed class TypeParameterRepresentationFactoryProvider
+    : ITypeParameterRepresentationFactoryProvider
 {
     private readonly IIndexedAndNamedTypeParameterRepresentationFactory IndexedAndNamed;
     private readonly IIndexedTypeParameterRepresentationFactory Indexed;
@@ -13,7 +14,10 @@ public sealed class TypeParameterRepresentationFactoryProvider : ITypeParameterR
     /// <param name="indexedAndNamed">Handles creation of <see cref="ITypeParameterRepresentation"/> using the indices and names of type parameters.</param>
     /// <param name="indexed">Handles creation of <see cref="ITypeParameterRepresentation"/> using the indices of type parameters.</param>
     /// <param name="named">Handles creation of <see cref="ITypeParameterRepresentation"/> using the names of type parameters.</param>
-    public TypeParameterRepresentationFactoryProvider(IIndexedAndNamedTypeParameterRepresentationFactory indexedAndNamed, IIndexedTypeParameterRepresentationFactory indexed, INamedTypeParameterRepresentationFactory named)
+    public TypeParameterRepresentationFactoryProvider(
+        IIndexedAndNamedTypeParameterRepresentationFactory indexedAndNamed,
+        IIndexedTypeParameterRepresentationFactory indexed,
+        INamedTypeParameterRepresentationFactory named)
     {
         IndexedAndNamed = indexedAndNamed ?? throw new ArgumentNullException(nameof(indexedAndNamed));
         Indexed = indexed ?? throw new ArgumentNullException(nameof(indexed));

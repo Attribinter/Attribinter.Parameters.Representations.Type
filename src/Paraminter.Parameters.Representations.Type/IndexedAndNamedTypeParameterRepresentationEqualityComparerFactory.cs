@@ -4,12 +4,14 @@ using System;
 using System.Collections.Generic;
 
 /// <inheritdoc cref="IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory"/>
-public sealed class IndexedAndNamedTypeParameterRepresentationEqualityComparerFactory : IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory
+public sealed class IndexedAndNamedTypeParameterRepresentationEqualityComparerFactory
+    : IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory
 {
     /// <summary>Instantiates a <see cref="IndexedAndNamedTypeParameterRepresentationEqualityComparerFactory"/>, handling creation of comparers of <see cref="ITypeParameterRepresentation"/> which consider the indices and names of type parameter representations.</summary>
     public IndexedAndNamedTypeParameterRepresentationEqualityComparerFactory() { }
 
-    IEqualityComparer<ITypeParameterRepresentation> IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory.Create(IEqualityComparer<string> nameComparer)
+    IEqualityComparer<ITypeParameterRepresentation> IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory.Create(
+        IEqualityComparer<string> nameComparer)
     {
         if (nameComparer is null)
         {
@@ -19,16 +21,20 @@ public sealed class IndexedAndNamedTypeParameterRepresentationEqualityComparerFa
         return new TypeParameterRepresentationEqualityComparer(nameComparer);
     }
 
-    private sealed class TypeParameterRepresentationEqualityComparer : IEqualityComparer<ITypeParameterRepresentation>
+    private sealed class TypeParameterRepresentationEqualityComparer
+        : IEqualityComparer<ITypeParameterRepresentation>
     {
         private readonly IEqualityComparer<string> NameComparer;
 
-        public TypeParameterRepresentationEqualityComparer(IEqualityComparer<string> nameComparer)
+        public TypeParameterRepresentationEqualityComparer(
+            IEqualityComparer<string> nameComparer)
         {
             NameComparer = nameComparer;
         }
 
-        bool IEqualityComparer<ITypeParameterRepresentation>.Equals(ITypeParameterRepresentation x, ITypeParameterRepresentation y)
+        bool IEqualityComparer<ITypeParameterRepresentation>.Equals(
+            ITypeParameterRepresentation x,
+            ITypeParameterRepresentation y)
         {
             if (x is null)
             {
@@ -46,7 +52,8 @@ public sealed class IndexedAndNamedTypeParameterRepresentationEqualityComparerFa
             return NameComparer.Equals(x.GetName(), y.GetName());
         }
 
-        int IEqualityComparer<ITypeParameterRepresentation>.GetHashCode(ITypeParameterRepresentation obj)
+        int IEqualityComparer<ITypeParameterRepresentation>.GetHashCode(
+            ITypeParameterRepresentation obj)
         {
             if (obj is null)
             {
@@ -58,7 +65,9 @@ public sealed class IndexedAndNamedTypeParameterRepresentationEqualityComparerFa
             return (obj.GetIndex(), NameComparer.GetHashCode(obj.GetName())).GetHashCode();
         }
 
-        private static void ValidateRepresentation(ITypeParameterRepresentation representation, string paramName)
+        private static void ValidateRepresentation(
+            ITypeParameterRepresentation representation,
+            string paramName)
         {
             if (representation.IsIndexKnown is false)
             {

@@ -13,11 +13,13 @@ internal static class ComparerFixtureFactory
         return new ComparerFixture(sut);
     }
 
-    private sealed class ComparerFixture : IComparerFixture
+    private sealed class ComparerFixture
+        : IComparerFixture
     {
         private readonly IEqualityComparer<ITypeParameterRepresentation> Sut;
 
-        public ComparerFixture(IEqualityComparer<ITypeParameterRepresentation> sut)
+        public ComparerFixture(
+            IEqualityComparer<ITypeParameterRepresentation> sut)
         {
             Sut = sut;
         }

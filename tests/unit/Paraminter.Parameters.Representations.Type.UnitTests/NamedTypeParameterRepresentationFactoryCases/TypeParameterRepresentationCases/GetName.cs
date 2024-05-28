@@ -5,7 +5,7 @@ using Xunit;
 public sealed class GetName
 {
     [Fact]
-    public void ReturnsNameConstructedWith()
+    public void ReturnsName()
     {
         var expected = "Name";
 
@@ -16,5 +16,9 @@ public sealed class GetName
         Assert.Equal(expected, result);
     }
 
-    private static string Target(IRepresentationFixture fixture) => fixture.Sut.GetName();
+    private static string Target(
+        IRepresentationFixture fixture)
+    {
+        return fixture.Sut.GetName();
+    }
 }
