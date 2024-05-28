@@ -15,7 +15,8 @@ internal static class ProviderFixtureFactory
         return new ProviderFixture(sut, indexedAndNamedMock, indexedMock, namedMock);
     }
 
-    private sealed class ProviderFixture : IProviderFixture
+    private sealed class ProviderFixture
+        : IProviderFixture
     {
         private readonly ITypeParameterRepresentationEqualityComparerFactoryProvider Sut;
 
@@ -23,7 +24,11 @@ internal static class ProviderFixtureFactory
         private readonly Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> IndexedMock;
         private readonly Mock<INamedTypeParameterRepresentationEqualityComparerFactory> NamedMock;
 
-        public ProviderFixture(ITypeParameterRepresentationEqualityComparerFactoryProvider sut, Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> indexedAndNamedMock, Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> indexedMock, Mock<INamedTypeParameterRepresentationEqualityComparerFactory> namedMock)
+        public ProviderFixture(
+            ITypeParameterRepresentationEqualityComparerFactoryProvider sut,
+            Mock<IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory> indexedAndNamedMock,
+            Mock<IIndexedTypeParameterRepresentationEqualityComparerFactory> indexedMock,
+            Mock<INamedTypeParameterRepresentationEqualityComparerFactory> namedMock)
         {
             Sut = sut;
 

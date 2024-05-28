@@ -3,18 +3,25 @@
 using System;
 
 /// <inheritdoc cref="IIndexedTypeParameterRepresentationFactory"/>
-public sealed class IndexedTypeParameterRepresentationFactory : IIndexedTypeParameterRepresentationFactory
+public sealed class IndexedTypeParameterRepresentationFactory
+    : IIndexedTypeParameterRepresentationFactory
 {
     /// <summary>Instantiates a <see cref="IndexedTypeParameterRepresentationFactory"/>, handling creation of <see cref="ITypeParameterRepresentation"/> using the indices of type parameters.</summary>
     public IndexedTypeParameterRepresentationFactory() { }
 
-    ITypeParameterRepresentation IIndexedTypeParameterRepresentationFactory.Create(int index) => new TypeParameterRepresentation(index);
+    ITypeParameterRepresentation IIndexedTypeParameterRepresentationFactory.Create(
+        int index)
+    {
+        return new TypeParameterRepresentation(index);
+    }
 
-    private sealed class TypeParameterRepresentation : ITypeParameterRepresentation
+    private sealed class TypeParameterRepresentation
+        : ITypeParameterRepresentation
     {
         private readonly int Index;
 
-        public TypeParameterRepresentation(int index)
+        public TypeParameterRepresentation(
+            int index)
         {
             Index = index;
         }

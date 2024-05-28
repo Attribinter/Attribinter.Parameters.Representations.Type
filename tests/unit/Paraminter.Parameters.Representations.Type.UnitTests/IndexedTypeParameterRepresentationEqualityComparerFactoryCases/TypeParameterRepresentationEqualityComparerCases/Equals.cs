@@ -59,7 +59,9 @@ public sealed class Equals
     public void DifferentIndices_ReturnsFalse() => WithIndices_ReturnsIntegerEquality(41, 42);
 
     [AssertionMethod]
-    private void WithIndices_ReturnsIntegerEquality(int xIndex, int yIndex)
+    private void WithIndices_ReturnsIntegerEquality(
+        int xIndex,
+        int yIndex)
     {
         var expected = xIndex == yIndex;
 
@@ -77,5 +79,10 @@ public sealed class Equals
         Assert.Equal(expected, result);
     }
 
-    private bool Target(ITypeParameterRepresentation x, ITypeParameterRepresentation y) => Fixture.Sut.Equals(x, y);
+    private bool Target(
+        ITypeParameterRepresentation x,
+        ITypeParameterRepresentation y)
+    {
+        return Fixture.Sut.Equals(x, y);
+    }
 }

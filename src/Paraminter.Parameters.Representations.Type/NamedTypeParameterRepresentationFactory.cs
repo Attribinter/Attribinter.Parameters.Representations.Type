@@ -3,12 +3,14 @@
 using System;
 
 /// <inheritdoc cref="INamedTypeParameterRepresentationFactory"/>
-public sealed class NamedTypeParameterRepresentationFactory : INamedTypeParameterRepresentationFactory
+public sealed class NamedTypeParameterRepresentationFactory
+    : INamedTypeParameterRepresentationFactory
 {
     /// <summary>Instantiates a <see cref="NamedTypeParameterRepresentationFactory"/>, handling creation of <see cref="ITypeParameterRepresentation"/> using the names of type parameters.</summary>
     public NamedTypeParameterRepresentationFactory() { }
 
-    ITypeParameterRepresentation INamedTypeParameterRepresentationFactory.Create(string name)
+    ITypeParameterRepresentation INamedTypeParameterRepresentationFactory.Create(
+        string name)
     {
         if (name is null)
         {
@@ -18,11 +20,13 @@ public sealed class NamedTypeParameterRepresentationFactory : INamedTypeParamete
         return new TypeParameterRepresentation(name);
     }
 
-    private sealed class TypeParameterRepresentation : ITypeParameterRepresentation
+    private sealed class TypeParameterRepresentation
+        : ITypeParameterRepresentation
     {
         private readonly string Name;
 
-        public TypeParameterRepresentation(string name)
+        public TypeParameterRepresentation(
+            string name)
         {
             Name = name;
         }

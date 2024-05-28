@@ -9,11 +9,13 @@ internal static class FactoryFixtureFactory
         return new FactoryFixture(sut);
     }
 
-    private sealed class FactoryFixture : IFactoryFixture
+    private sealed class FactoryFixture
+        : IFactoryFixture
     {
         private readonly IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory Sut;
 
-        public FactoryFixture(IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory sut)
+        public FactoryFixture(
+            IIndexedAndNamedTypeParameterRepresentationEqualityComparerFactory sut)
         {
             Sut = sut;
         }

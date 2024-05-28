@@ -11,11 +11,13 @@ internal static class RepresentationFixtureFactory
         return new RepresentationFixture(sut);
     }
 
-    private sealed class RepresentationFixture : IRepresentationFixture
+    private sealed class RepresentationFixture
+        : IRepresentationFixture
     {
         private readonly ITypeParameterRepresentation Sut;
 
-        public RepresentationFixture(ITypeParameterRepresentation sut)
+        public RepresentationFixture(
+            ITypeParameterRepresentation sut)
         {
             Sut = sut;
         }

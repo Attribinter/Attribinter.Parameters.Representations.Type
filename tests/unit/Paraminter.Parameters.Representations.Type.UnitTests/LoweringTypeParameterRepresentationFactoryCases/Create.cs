@@ -38,5 +38,9 @@ public sealed class Create
         Assert.Same(representation, result);
     }
 
-    private ITypeParameterRepresentation Target(ITypeParameter parameter) => Fixture.Sut.Create(parameter);
+    private ITypeParameterRepresentation Target(
+        ITypeParameter parameter)
+    {
+        return Fixture.Sut.Create(parameter);
+    }
 }

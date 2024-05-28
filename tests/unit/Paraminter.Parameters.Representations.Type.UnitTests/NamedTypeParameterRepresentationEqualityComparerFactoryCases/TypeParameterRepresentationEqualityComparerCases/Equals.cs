@@ -59,7 +59,8 @@ public sealed class Equals
     public void TrueReturningNameComparer_ReturnsTrue() => PropagatesReturnValue(true);
 
     [AssertionMethod]
-    private void PropagatesReturnValue(bool returnValue)
+    private void PropagatesReturnValue(
+        bool returnValue)
     {
         var xName = "NameX";
         var yName = "NameY";
@@ -80,5 +81,10 @@ public sealed class Equals
         Assert.Equal(returnValue, result);
     }
 
-    private bool Target(ITypeParameterRepresentation x, ITypeParameterRepresentation y) => Fixture.Sut.Equals(x, y);
+    private bool Target(
+        ITypeParameterRepresentation x,
+        ITypeParameterRepresentation y)
+    {
+        return Fixture.Sut.Equals(x, y);
+    }
 }

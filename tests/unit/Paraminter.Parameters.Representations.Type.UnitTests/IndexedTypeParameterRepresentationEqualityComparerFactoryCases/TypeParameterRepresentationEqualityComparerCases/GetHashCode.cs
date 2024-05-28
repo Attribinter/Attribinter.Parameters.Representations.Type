@@ -37,7 +37,8 @@ public sealed class GetHashCode
     public void WithIndex_42_ReturnsIntegerHashCode() => WithIndex_ReturnsIntegerHashCode(42);
 
     [AssertionMethod]
-    private void WithIndex_ReturnsIntegerHashCode(int index)
+    private void WithIndex_ReturnsIntegerHashCode(
+        int index)
     {
         var expected = index.GetHashCode();
 
@@ -51,5 +52,9 @@ public sealed class GetHashCode
         Assert.Equal(expected, result);
     }
 
-    private int Target(ITypeParameterRepresentation obj) => Fixture.Sut.GetHashCode(obj);
+    private int Target(
+        ITypeParameterRepresentation obj)
+    {
+        return Fixture.Sut.GetHashCode(obj);
+    }
 }
