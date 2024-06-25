@@ -4,7 +4,7 @@
         <AssemblyName>Paraminter.Parameters.Representations.Type.Core</AssemblyName>
 
         <PackageId>Paraminter.Parameters.Representations.Type.Core</PackageId>
-        <Description>Defines Paraminter type parameter representations.</Description>
+        <Description>Defines the core components of Paraminter type parameter representations.</Description>
     </PropertyGroup>
 
 </Project>
