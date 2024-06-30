@@ -14,7 +14,7 @@ internal static class FixtureFactory
 
         var sut = factory.Handle(queryMock.Object);
 
-        return new Fixture(sut);
+        return new Fixture(sut, name);
     }
 
     private sealed class Fixture
@@ -22,12 +22,19 @@ internal static class FixtureFactory
     {
         private readonly ITypeParameterRepresentation Sut;
 
+        private readonly string Name;
+
         public Fixture(
-            ITypeParameterRepresentation sut)
+            ITypeParameterRepresentation sut,
+            string name)
         {
             Sut = sut;
+
+            Name = name;
         }
 
         ITypeParameterRepresentation IFixture.Sut => Sut;
+
+        string IFixture.Name => Name;
     }
 }

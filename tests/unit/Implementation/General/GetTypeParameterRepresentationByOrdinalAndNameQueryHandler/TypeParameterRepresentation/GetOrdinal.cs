@@ -7,13 +7,11 @@ public sealed class GetOrdinal
     [Fact]
     public void ReturnsOrdinal()
     {
-        var expected = 42;
-
-        var fixture = FixtureFactory.Create(expected, "Name");
+        var fixture = FixtureFactory.Create(42, "Name");
 
         var result = Target(fixture);
 
-        Assert.Equal(expected, result);
+        Assert.Equal(fixture.Ordinal, result);
     }
 
     private static int Target(
