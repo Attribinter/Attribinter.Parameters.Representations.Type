@@ -7,13 +7,11 @@ public sealed class GetName
     [Fact]
     public void ReturnsName()
     {
-        var expected = "Name";
-
-        var fixture = FixtureFactory.Create(expected);
+        var fixture = FixtureFactory.Create("Name");
 
         var result = Target(fixture);
 
-        Assert.Equal(expected, result);
+        Assert.Equal(fixture.Name, result);
     }
 
     private static string Target(
