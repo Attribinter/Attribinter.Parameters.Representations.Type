@@ -1,4 +1,4 @@
-# Paraminter.Parameters.Representations.Type.Implementation.General
+# Paraminter.Parameters.Representations.Type
 
 Provides general implementations of services related to `Paraminter` type parameter representations.
 

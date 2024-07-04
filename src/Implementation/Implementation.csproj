@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <AssemblyName>Paraminter.Parameters.Representations.Type.Implementation.General</AssemblyName>
+        <AssemblyName>Paraminter.Parameters.Representations</AssemblyName>
 
-        <PackageId>Paraminter.Parameters.Representations.Type.Implementation.General</PackageId>
+        <PackageId>Paraminter.Parameters.Representations</PackageId>
         <Description>Provides general implementations of services related to Paraminter type parameter representations.</Description>
     </PropertyGroup>
 
