@@ -3,7 +3,6 @@
 using Moq;
 
 using System;
-using System.Linq.Expressions;
 
 using Xunit;
 
@@ -27,6 +26,8 @@ public sealed class Handle
         var ordinal = 42;
         var name = "Name";
 
+        var byOrdinalAndNameQuery = Mock.Of<IGetTypeParameterRepresentationByOrdinalAndNameQuery>();
+
         Mock<ITypeParameter> parameterMock = new();
         Mock<IGetParameterRepresentationQuery<ITypeParameter>> queryMock = new();
 
@@ -35,20 +36,12 @@ public sealed class Handle
 
         queryMock.Setup(static (query) => query.Parameter).Returns(parameterMock.Object);
 
-        var byOrdinalAndNameQueryMatcher = CreateByOrdinalAndNameQueryMatcher(ordinal, name);
-
-        Fixture.ByOrdinalAndNameQueryHandlerMock.Setup((factory) => factory.Handle(It.Is(byOrdinalAndNameQueryMatcher))).Returns(representation);
+        Fixture.ByOrdinalAndNameQueryFactoryMock.Setup((factory) => factory.Create(ordinal, name)).Returns(byOrdinalAndNameQuery);
+        Fixture.ByOrdinalAndNameQueryHandlerMock.Setup((factory) => factory.Handle(byOrdinalAndNameQuery)).Returns(representation);
 
         var result = Target(queryMock.Object);
 
         Assert.Same(representation, result);
-    }
-
-    private static Expression<Func<IGetTypeParameterRepresentationByOrdinalAndNameQuery, bool>> CreateByOrdinalAndNameQueryMatcher(
-        int ordinal,
-        string name)
-    {
-        return (query) => query.Ordinal == ordinal && query.Name == name;
     }
 
     private ITypeParameterRepresentation Target(
