@@ -1,12 +1,18 @@
 ﻿namespace Paraminter.Parameters.Representations.GetTypeParameterRepresentationByNameQuery;
 
+using Moq;
+
 internal static class FixtureFactory
 {
     public static IFixture Create(int ordinal)
     {
-        ITypeParameterRepresentationWithOrdinalFactory factory = new TypeParameterRepresentationWithOrdinalFactory();
+        Mock<IGetTypeParameterRepresentationByOrdinalQuery> queryMock = new();
 
-        var sut = factory.Create(ordinal);
+        queryMock.Setup((query) => query.Ordinal).Returns(ordinal);
+
+        IQueryHandler<IGetTypeParameterRepresentationByOrdinalQuery, ITypeParameterRepresentation> factory = new TypeParameterRepresentationWithOrdinalFactory();
+
+        var sut = factory.Handle(queryMock.Object);
 
         return new Fixture(sut, ordinal);
     }

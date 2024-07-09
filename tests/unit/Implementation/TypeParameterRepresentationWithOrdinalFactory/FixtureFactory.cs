@@ -12,14 +12,14 @@ internal static class FixtureFactory
     private sealed class Fixture
         : IFixture
     {
-        private readonly ITypeParameterRepresentationWithOrdinalFactory Sut;
+        private readonly IQueryHandler<IGetTypeParameterRepresentationByOrdinalQuery, ITypeParameterRepresentation> Sut;
 
         public Fixture(
-            ITypeParameterRepresentationWithOrdinalFactory sut)
+            IQueryHandler<IGetTypeParameterRepresentationByOrdinalQuery, ITypeParameterRepresentation> sut)
         {
             Sut = sut;
         }
 
-        ITypeParameterRepresentationWithOrdinalFactory IFixture.Sut => Sut;
+        IQueryHandler<IGetTypeParameterRepresentationByOrdinalQuery, ITypeParameterRepresentation> IFixture.Sut => Sut;
     }
 }
