@@ -2,5 +2,5 @@
 
 internal interface IFixture
 {
-    public abstract ITypeParameterRepresentationWithOrdinalFactory Sut { get; }
+    public abstract IQueryHandler<IGetTypeParameterRepresentationByOrdinalQuery, ITypeParameterRepresentation> Sut { get; }
 }

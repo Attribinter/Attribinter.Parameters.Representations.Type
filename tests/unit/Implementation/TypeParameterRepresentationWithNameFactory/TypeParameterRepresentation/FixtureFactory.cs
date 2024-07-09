@@ -1,12 +1,18 @@
 ﻿namespace Paraminter.Parameters.Representations.GetTypeParameterRepresentationByNameQuery;
 
+using Moq;
+
 internal static class FixtureFactory
 {
     public static IFixture Create(string name)
     {
-        ITypeParameterRepresentationWithNameFactory factory = new TypeParameterRepresentationWithNameFactory();
+        Mock<IGetTypeParameterRepresentationByNameQuery> queryMock = new();
 
-        var sut = factory.Create(name);
+        queryMock.Setup((query) => query.Name).Returns(name);
+
+        IQueryHandler<IGetTypeParameterRepresentationByNameQuery, ITypeParameterRepresentation> factory = new TypeParameterRepresentationWithNameFactory();
+
+        var sut = factory.Handle(queryMock.Object);
 
         return new Fixture(sut, name);
     }

@@ -1,15 +1,17 @@
 ﻿namespace Paraminter.Parameters.Representations;
 
+using Moq;
+
 using System;
 
 using Xunit;
 
-public sealed class Create
+public sealed class Handle
 {
     private readonly IFixture Fixture = FixtureFactory.Create();
 
     [Fact]
-    public void NullName_ThrowsArgumentNullException()
+    public void NullQuery_ThrowsArgumentNullException()
     {
         var result = Record.Exception(() => Target(null!));
 
@@ -17,16 +19,16 @@ public sealed class Create
     }
 
     [Fact]
-    public void ValidName_ReturnsRepresentation()
+    public void ValidQuery_ReturnsRepresentation()
     {
-        var result = Target("Name");
+        var result = Target(Mock.Of<IGetTypeParameterRepresentationByNameQuery>());
 
         Assert.NotNull(result);
     }
 
     private ITypeParameterRepresentation Target(
-        string name)
+        IGetTypeParameterRepresentationByNameQuery query)
     {
-        return Fixture.Sut.Create(name);
+        return Fixture.Sut.Handle(query);
     }
 }

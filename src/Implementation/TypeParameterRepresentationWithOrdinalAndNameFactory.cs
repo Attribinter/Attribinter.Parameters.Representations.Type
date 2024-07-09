@@ -2,23 +2,22 @@
 
 using System;
 
-/// <inheritdoc cref="ITypeParameterRepresentationWithOrdinalAndNameFactory"/>
+/// <summary>Handles creation of <see cref="ITypeParameterRepresentation"/> using the ordinals and names of type parameters.</summary>
 public sealed class TypeParameterRepresentationWithOrdinalAndNameFactory
-    : ITypeParameterRepresentationWithOrdinalAndNameFactory
+    : IQueryHandler<IGetTypeParameterRepresentationByOrdinalAndNameQuery, ITypeParameterRepresentation>
 {
     /// <summary>Instantiates a <see cref="TypeParameterRepresentationWithOrdinalAndNameFactory"/>, handling creation of <see cref="ITypeParameterRepresentation"/>.</summary>
     public TypeParameterRepresentationWithOrdinalAndNameFactory() { }
 
-    ITypeParameterRepresentation ITypeParameterRepresentationWithOrdinalAndNameFactory.Create(
-        int ordinal,
-        string name)
+    ITypeParameterRepresentation IQueryHandler<IGetTypeParameterRepresentationByOrdinalAndNameQuery, ITypeParameterRepresentation>.Handle(
+        IGetTypeParameterRepresentationByOrdinalAndNameQuery query)
     {
-        if (name is null)
+        if (query is null)
         {
-            throw new ArgumentNullException(nameof(name));
+            throw new ArgumentNullException(nameof(query));
         }
 
-        return new TypeParameterRepresentation(ordinal, name);
+        return new TypeParameterRepresentation(query.Ordinal, query.Name);
     }
 
     private sealed class TypeParameterRepresentation

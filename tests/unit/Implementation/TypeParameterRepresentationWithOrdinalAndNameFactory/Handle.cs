@@ -21,22 +21,13 @@ public sealed class Handle
     [Fact]
     public void ValidQuery_ReturnsRepresentation()
     {
-        var name = "Name";
-        var parameterRepresentation = Mock.Of<ITypeParameterRepresentation>();
+        var result = Target(Mock.Of<IGetTypeParameterRepresentationByOrdinalAndNameQuery>());
 
-        Mock<IGetTypeParameterRepresentationByNameQuery> queryMock = new();
-
-        queryMock.Setup(static (query) => query.Name).Returns(name);
-
-        Fixture.TypeParameterRepresentationFactoryMock.Setup((factory) => factory.Create(name)).Returns(parameterRepresentation);
-
-        var result = Target(queryMock.Object);
-
-        Assert.Same(parameterRepresentation, result);
+        Assert.NotNull(result);
     }
 
     private ITypeParameterRepresentation Target(
-        IGetTypeParameterRepresentationByNameQuery query)
+        IGetTypeParameterRepresentationByOrdinalAndNameQuery query)
     {
         return Fixture.Sut.Handle(query);
     }

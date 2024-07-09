@@ -2,22 +2,22 @@
 
 using System;
 
-/// <inheritdoc cref="ITypeParameterRepresentationWithNameFactory"/>
+/// <summary>Handles creation of <see cref="ITypeParameterRepresentation"/> using the names of type parameters.</summary>
 public sealed class TypeParameterRepresentationWithNameFactory
-    : ITypeParameterRepresentationWithNameFactory
+    : IQueryHandler<IGetTypeParameterRepresentationByNameQuery, ITypeParameterRepresentation>
 {
     /// <summary>Instantiates a <see cref="TypeParameterRepresentationWithNameFactory"/>, handling creation of <see cref="ITypeParameterRepresentation"/>.</summary>
     public TypeParameterRepresentationWithNameFactory() { }
 
-    ITypeParameterRepresentation ITypeParameterRepresentationWithNameFactory.Create(
-        string name)
+    ITypeParameterRepresentation IQueryHandler<IGetTypeParameterRepresentationByNameQuery, ITypeParameterRepresentation>.Handle(
+        IGetTypeParameterRepresentationByNameQuery query)
     {
-        if (name is null)
+        if (query is null)
         {
-            throw new ArgumentNullException(nameof(name));
+            throw new ArgumentNullException(nameof(query));
         }
 
-        return new TypeParameterRepresentation(name);
+        return new TypeParameterRepresentation(query.Name);
     }
 
     private sealed class TypeParameterRepresentation

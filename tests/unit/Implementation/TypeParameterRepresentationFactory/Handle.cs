@@ -26,8 +26,6 @@ public sealed class Handle
         var ordinal = 42;
         var name = "Name";
 
-        var byOrdinalAndNameQuery = Mock.Of<IGetTypeParameterRepresentationByOrdinalAndNameQuery>();
-
         Mock<ITypeParameter> parameterMock = new();
         Mock<IGetParameterRepresentationQuery<ITypeParameter>> queryMock = new();
 
@@ -36,8 +34,7 @@ public sealed class Handle
 
         queryMock.Setup(static (query) => query.Parameter).Returns(parameterMock.Object);
 
-        Fixture.ByOrdinalAndNameQueryFactoryMock.Setup((factory) => factory.Create(ordinal, name)).Returns(byOrdinalAndNameQuery);
-        Fixture.ByOrdinalAndNameQueryHandlerMock.Setup((factory) => factory.Handle(byOrdinalAndNameQuery)).Returns(representation);
+        Fixture.ByOrdinalAndNameQueryCoordinatorMock.Setup((factory) => factory.Handle(ordinal, name)).Returns(representation);
 
         var result = Target(queryMock.Object);
 

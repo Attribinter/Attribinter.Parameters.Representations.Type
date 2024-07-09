@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Paraminter.Parameters.Representations.Queries" />
+        <PackageReference Include="Paraminter.Queries.Core" />
     </ItemGroup>
 
 </Project>
