@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>Paraminter.Parameters.Representations</AssemblyName>
+
+        <PackageId>Paraminter.Parameters.Representations</PackageId>
+        <Description>Provides general implementations of services related to Paraminter type parameter representations.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Paraminter.Parameters.Type.Core" />
+        <PackageReference Include="Paraminter.Parameters.Representations.Queries.Core" />
+        <PackageReference Include="Paraminter.Queries.Coordinators.Abstractions" />
+        <PackageReference Include="Paraminter.Queries.Handlers.Abstractions" />
+
+        <ProjectReference Include="$(SolutionDir)\src\Core\Core.csproj" />
+        <ProjectReference Include="$(SolutionDir)\src\Queries\Coordinators\Abstractions\Queries.Coordinators.Abstractions.csproj" />
+        <ProjectReference Include="$(SolutionDir)\src\Queries\Core\Queries.Core.csproj" />
+        <ProjectReference Include="$(SolutionDir)\src\Queries\Factories\Abstractions\Queries.Factories.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>
