@@ -1,0 +1,22 @@
+﻿namespace Paraminter.Parameters.Representations.Type.Queries.Factories.GetTypeParameterRepresentationByNameQuery;
+
+using Xunit;
+
+public sealed class Ordinal
+{
+    [Fact]
+    public void ReturnsOrdinal()
+    {
+        var fixture = FixtureFactory.Create(42, "Name");
+
+        var result = Target(fixture);
+
+        Assert.Equal(fixture.Ordinal, result);
+    }
+
+    private static int Target(
+        IFixture fixture)
+    {
+        return fixture.Sut.Ordinal;
+    }
+}

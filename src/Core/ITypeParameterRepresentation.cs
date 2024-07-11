@@ -1,4 +1,4 @@
-﻿namespace Paraminter.Parameters.Representations;
+﻿namespace Paraminter.Parameters.Representations.Type;
 
 /// <summary>Represents a type parameter.</summary>
 public interface ITypeParameterRepresentation
