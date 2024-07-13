@@ -2,7 +2,8 @@
 
 using Moq;
 
-using Paraminter.Parameters.Representations.Type.Queries.Coordinators;
+using Paraminter.Parameters.Representations.Type.Queries;
+using Paraminter.Queries.Handlers;
 
 using System;
 
@@ -11,7 +12,7 @@ using Xunit;
 public sealed class Constructor
 {
     [Fact]
-    public void NullByOrdinalAndNameQueryCoordinator_ThrowsArgumentNullException()
+    public void NullByOrdinalAndNameQueryHandler_ThrowsArgumentNullException()
     {
         var result = Record.Exception(() => Target(null!));
 
@@ -22,14 +23,14 @@ public sealed class Constructor
     public void ValidArguments_ReturnsFactory()
     {
         var result = Target(
-            Mock.Of<IGetTypeParameterRepresentationByOrdinalAndNameQueryCoordinator<ITypeParameterRepresentation>>());
+            Mock.Of<IQueryHandler<IGetTypeParameterRepresentationByOrdinalAndNameQuery, ITypeParameterRepresentation>>());
 
         Assert.NotNull(result);
     }
 
     private static TypeParameterRepresentationFactory Target(
-        IGetTypeParameterRepresentationByOrdinalAndNameQueryCoordinator<ITypeParameterRepresentation> byOrdinalAndNameQueryCoordinator)
+        IQueryHandler<IGetTypeParameterRepresentationByOrdinalAndNameQuery, ITypeParameterRepresentation> byOrdinalAndNameQueryHandler)
     {
-        return new TypeParameterRepresentationFactory(byOrdinalAndNameQueryCoordinator);
+        return new TypeParameterRepresentationFactory(byOrdinalAndNameQueryHandler);
     }
 }
