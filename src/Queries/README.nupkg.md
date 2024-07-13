@@ -1,4 +1,4 @@
-# Paraminter.Parameters.Representations.Type.Queries.Core
+# Paraminter.Parameters.Representations.Type.Queries
 
 Defines queries related to `Paraminter` type parameter representations.
 

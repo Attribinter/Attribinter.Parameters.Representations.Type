@@ -13,7 +13,6 @@
         <PackageVersion Include="Paraminter.Logo" Version="2.0.0-alpha.10" />
         <PackageVersion Include="Paraminter.Parameters.Representations.Queries.Core" Version="8.0.0-alpha.50" />
         <PackageVersion Include="Paraminter.Parameters.Type.Core" Version="8.0.0-alpha.60" />
-        <PackageVersion Include="Paraminter.Queries.Coordinators.Abstractions" Version="8.0.0-alpha.17" />
         <PackageVersion Include="Paraminter.Queries.Core" Version="8.0.0-alpha.17" />
         <PackageVersion Include="Paraminter.Queries.Handlers.Abstractions" Version="8.0.0-alpha.17" />
 
