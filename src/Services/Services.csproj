@@ -9,7 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="Paraminter.Parameters.Type.Core" />
-        <PackageReference Include="Paraminter.Parameters.Representations.Queries.Core" />
+        <PackageReference Include="Paraminter.Parameters.Representations.Queries" />
         <PackageReference Include="Paraminter.Queries.Handlers.Abstractions" />
 
         <ProjectReference Include="$(SolutionDir)\src\Core\Core.csproj" />

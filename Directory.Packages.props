@@ -11,10 +11,10 @@
         <PackageVersion Include="Moq" Version="4.20.70" />
 
         <PackageVersion Include="Paraminter.Logo" Version="2.0.0-alpha.10" />
-        <PackageVersion Include="Paraminter.Parameters.Representations.Queries.Core" Version="8.0.0-alpha.50" />
-        <PackageVersion Include="Paraminter.Parameters.Type.Core" Version="8.0.0-alpha.60" />
-        <PackageVersion Include="Paraminter.Queries.Core" Version="8.0.0-alpha.17" />
-        <PackageVersion Include="Paraminter.Queries.Handlers.Abstractions" Version="8.0.0-alpha.17" />
+        <PackageVersion Include="Paraminter.Parameters.Representations.Queries" Version="8.0.0-alpha.58" />
+        <PackageVersion Include="Paraminter.Parameters.Type.Core" Version="8.0.0-alpha.64" />
+        <PackageVersion Include="Paraminter.Queries.Core" Version="8.0.0-alpha.19" />
+        <PackageVersion Include="Paraminter.Queries.Handlers.Abstractions" Version="8.0.0-alpha.19" />
 
         <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.24.0.89429" />
 
