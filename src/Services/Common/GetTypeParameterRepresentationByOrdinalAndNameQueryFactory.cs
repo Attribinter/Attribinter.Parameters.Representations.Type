@@ -1,4 +1,6 @@
-﻿namespace Paraminter.Parameters.Representations.Type.Queries;
+﻿namespace Paraminter.Parameters.Representations.Type.Common;
+
+using Paraminter.Parameters.Representations.Type.Queries;
 
 internal static class GetTypeParameterRepresentationByOrdinalAndNameQueryFactory
 {
