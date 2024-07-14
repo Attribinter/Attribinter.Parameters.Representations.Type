@@ -1,6 +1,7 @@
 ﻿namespace Paraminter.Parameters.Representations.Type;
 
 using Paraminter.Parameters.Representations.Queries;
+using Paraminter.Parameters.Representations.Type.Common;
 using Paraminter.Parameters.Representations.Type.Queries;
 using Paraminter.Parameters.Type;
 using Paraminter.Queries.Handlers;
